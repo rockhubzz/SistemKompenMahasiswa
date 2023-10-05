@@ -16,7 +16,7 @@ public static void main(String[] args) {
 
     switch (usr) {
         case 1: //Admin
-            System.out.print("Masukkan username anda: ");
+            System.out.print("/nMasukkan username anda: ");
             String inUserAdm = in.next();
             System.out.print("Masukkan password anda: ");
             String inPWAdm = in.next();
@@ -28,7 +28,7 @@ public static void main(String[] args) {
             }
             break;
         case 2: // Dosen
-            System.out.print("Masukkan username anda: ");
+            System.out.print("/nMasukkan username anda: ");
             String inUserDosen = in.next();
             System.out.print("Masukkan password anda: ");
             String inPWDosen = in.next();
@@ -40,7 +40,7 @@ public static void main(String[] args) {
             }
             break;
         case 3: //Mahasiswa
-            System.out.print("Masukkan username anda: ");
+            System.out.print("/nMasukkan username anda: ");
             String inUserMhs = in.next();
             System.out.print("Masukkan password anda: ");
             String inPWMhs = in.next();
@@ -55,15 +55,15 @@ public static void main(String[] args) {
             System.out.println("Pilihan tidak valid.");
     }
         if(loggedInAdmin==true){
-            System.out.println("Berhasil login sebagai admin!");
+            System.out.println("/nBerhasil login sebagai admin!");
             System.out.println("[Dashboard]");
         }
         if(loggedInDosen==true){
-            System.out.println("Berhasil login sebagai dosen!");
+            System.out.println("/nBerhasil login sebagai dosen!");
             System.out.println("[Dashboard]");
         }
         if(loggedInMahasiswa==true){
-            System.out.println("Berhasil login sebagai mahasiswa!");
+            System.out.println("/nBerhasil login sebagai mahasiswa!");
             System.out.println("[Dashboard]");
         }
 
