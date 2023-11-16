@@ -44,7 +44,9 @@ Masukkan pilihan anda:
 - Help
 - Contact Admin
 - Informasi Profile Admin & Dosen
+- Informasi user tambahan
+- Gunakan NIM atau NIDN untuk login pertama kali dan minta user untuk mengganti username dan password
 
 4. Bug Hunting  
-Tambahkan pada to-do list jika ditemukan bug atau error
+Perbaiki error atau tambahkan pada to-do list jika ditemukan bug atau error
 
