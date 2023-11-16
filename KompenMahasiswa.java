@@ -13,7 +13,7 @@ public class KompenMahasiswa {
 
         String adm[]= {"admin1", "adminkompen"};
         String dsn[]= {"dosen1", "dosenkompen"};
-        String mhs[]= {"mahasiswa1", "mahakompen"};
+        String mhs[]= {"2341720257", "2341720257"};
 
         boolean loggedInAdmin = false, loggedInDosen = false, loggedInMahasiswa = false, superuser = false;
 
@@ -77,7 +77,8 @@ public class KompenMahasiswa {
 
         //Data mhs1
         String[] mhs1= {"Mahasiswa",
-        "Meganthropus Paleojavanicus",
+        "Salsabila Mahda Runisha", 
+        "2341720257",
         "TI - 1F",
         "5",
         "Teknologi Informasi",
@@ -821,10 +822,11 @@ public class KompenMahasiswa {
                         byte subSubChoice11;
                         System.out.println("\n=== Profil Mahasiswa ===");
                         System.out.println("Nama            : "+mhs1[1]);
-                        System.out.println("Kelas           : "+mhs1[2]);
-                        System.out.println("Semester        : "+mhs1[3]);
-                        System.out.println("Jurusan         : "+mhs1[4]);
-                        System.out.println("Prodi           : "+mhs1[5]);
+                        System.out.println("NIM             : "+mhs1[2]);
+                        System.out.println("Kelas           : "+mhs1[3]);
+                        System.out.println("Semester        : "+mhs1[4]);
+                        System.out.println("Jurusan         : "+mhs1[5]);
+                        System.out.println("Prodi           : "+mhs1[6]);
                         System.out.println("0. Kembali");
                         System.out.println("1. Keluar");
                         System.out.print("Masukkan pilihan anda: ");
