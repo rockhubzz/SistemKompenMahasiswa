@@ -47,5 +47,5 @@ Masukkan pilihan anda:
 - Informasi Profile Admin & Dosen
 
 4. Bug Hunting
-Tambahkan pada to-do list jika ditemukan bug atau error
+   Tambahkan pada to-do list jika ditemukan bug atau error
 
