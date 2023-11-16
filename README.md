@@ -1,7 +1,6 @@
-
 # To-Do
 
-1. Fix perhitungan kompen
+1. Fix perhitungan kompen  
 contoh: smtSkrg=3, alpaSmt3=1, kompenSmt3=1
 ```bash
   ===== Alpaku =====
@@ -41,11 +40,11 @@ Username dan Password yang anda masukkan salah. Silakan coba lagi.
 Masukkan pilihan anda:
 ```
 
-3. Tambahkan kekurangan fitur
+3. Tambahkan kekurangan fitur:
 - Help
 - Contact Admin
 - Informasi Profile Admin & Dosen
 
-4. Bug Hunting
-- Tambahkan pada to-do list jika ditemukan bug atau error
+4. Bug Hunting  
+Tambahkan pada to-do list jika ditemukan bug atau error
 
