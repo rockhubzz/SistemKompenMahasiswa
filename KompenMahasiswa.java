@@ -12,7 +12,7 @@ public class KompenMahasiswa {
         int tersedia= 0;
 
         String adm[]= {"admin1", "adminkompen"};
-        String dsn[]= {"dosen1", "dosenkompen"};
+        String dsn[]= {"0123456789", "0123456789"};
         String mhs[]= {"2341720257", "2341720257"};
 
         boolean loggedInAdmin = false, loggedInDosen = false, loggedInMahasiswa = false, superuser = false;
@@ -88,7 +88,9 @@ public class KompenMahasiswa {
         //Data dsn1
         String dsn1[]= {
             "Dosen",
-            "Bpk. Yang Mulia Dosen"
+            "Rocky Alessandro Kristanto, S.Kom",
+            "0123456789",
+            "rocky@gmail.com"
         };
 
         //Data adm1
@@ -106,7 +108,9 @@ public class KompenMahasiswa {
 
         // Login
         while (!(loggedInAdmin && loggedInDosen && loggedInMahasiswa)) {
-                    System.out.println("\n=== Sistem Kompen Mahasiswa ===");
+                    System.out.println("-------------------------------");
+                    System.out.println("|== Sistem Kompen Mahasiswa ==|");
+                    System.out.println("-------------------------------");
                     System.out.print("Masukkan username anda: ");
                     String UsnInput = scanner.next();
                     if((UsnInput.equalsIgnoreCase("exit")) || UsnInput.equalsIgnoreCase("quit")){
@@ -116,13 +120,13 @@ public class KompenMahasiswa {
                     String PWInput = scanner.next();
 
                     if (UsnInput.equals(adm[0]) && PWInput.equals(adm[1])) {
-                        System.out.println("Selamat datang, "+adm[0]+"!");
+                        System.out.println("Selamat datang, "+adm1[1]+"!");
                         loggedInAdmin = true;
                     } else if(UsnInput.equals(dsn[0]) && PWInput.equals(dsn[1])){
-                        System.out.println("Selamat datang, "+dsn[0]+"!");
+                        System.out.println("Selamat datang, "+dsn1[1]+"!");
                         loggedInDosen=true;
                     } else if(UsnInput.equals(mhs[0]) && PWInput.equals(mhs[1])){
-                        System.out.println("Selamat datang, "+mhs[0]+"!");
+                        System.out.println("Selamat datang, "+mhs1[1]+"!");
                         loggedInMahasiswa=true;
                     } else if(UsnInput.equals("root") && PWInput.equals("admin")){
                         superuser=true;
@@ -131,10 +135,13 @@ public class KompenMahasiswa {
                     }
 
         while(superuser){
-            System.out.println("\n=== Sistem Kompen Mahasiswa ===");
-            System.out.println("1. Admin");
-            System.out.println("2. Dosen");
-            System.out.println("3. Mahasiswa");
+            System.out.println("-------------------------------");
+            System.out.println("|== Sistem Kompen Mahasiswa ==|");
+            System.out.println("-------------------------------");
+            System.out.println("|1. Admin                     |");
+            System.out.println("|2. Dosen                     |");
+            System.out.println("|3. Mahasiswa                 |");
+            System.out.println("-------------------------------");
             System.out.print("Login sebagai: ");
             int user = scanner.nextInt();
 
@@ -157,14 +164,17 @@ public class KompenMahasiswa {
         }
 
         while (loggedInAdmin) {
-            System.out.println("\n=== Sistem Kompen Mahasiswa ===");
-            System.out.println("1. Profile");
-            System.out.println("2. Audit Data Profile");
-            System.out.println("3. Input Alpa");
-            System.out.println("4. Manage Keamanan");
-            System.out.println("5. Help");
-            System.out.println("6. Logout");
-            System.out.println("7. Quit");
+            System.out.println("-------------------------------");
+            System.out.println("|== Sistem Kompen Mahasiswa ==|");
+            System.out.println("-------------------------------");
+            System.out.println("|1. Profile                   |");
+            System.out.println("|2. Audit Data Profile        |");
+            System.out.println("|3. Input Alpa                |");
+            System.out.println("|4. Manage Keamanan           |");
+            System.out.println("|5. Help                      |");
+            System.out.println("|6. Logout                    |");
+            System.out.println("|7. Quit                      |");
+            System.out.println("-------------------------------");
             System.out.print("Masukkan pilihan anda: ");
             int choice = scanner.nextInt();
             boolean choicee= true;
@@ -172,7 +182,9 @@ public class KompenMahasiswa {
             while(choicee){
             switch (choice) {
                 case 1:
-                    System.out.println("\n=== Profil Admin ===");
+                    System.out.println("-------------------------------");
+                    System.out.println("|======= Profile Admin =======|");
+                    System.out.println("-------------------------------");
                     System.out.println("Nama:       "+adm1[1]);
                     System.out.println("0. Kembali");
                     System.out.println("1. Keluar");
@@ -195,7 +207,9 @@ public class KompenMahasiswa {
                     break;
 
                     case 2:
-                    System.out.println("\n===== Audit Data =====");
+                    System.out.println("-------------------------------");
+                    System.out.println("|========= Audit Data ========|");
+                    System.out.println("-------------------------------");
                     System.out.println("Pilih data yang akan diedit:");
                     System.out.println("1. Admin");
                     System.out.println("2. Dosen");
@@ -227,7 +241,9 @@ public class KompenMahasiswa {
                         while(m12){
                         String item[]= {"Nama"};
                         String itemMhs[]= {"Nama", "Kelas", "Semester", "Jurusan", "Prodi"};
-                        System.out.println("\n===== Audit Data =====");
+                        System.out.println("-------------------------------");
+                        System.out.println("|========= Audit Data ========|");
+                        System.out.println("-------------------------------");
                         System.out.println("Pilih item yang akan diedit: ");
                         if(auditMenu==1 || auditMenu==2){
                         for(int i=0; i<item.length; i++){
@@ -298,7 +314,9 @@ public class KompenMahasiswa {
                     break;
 
                 case 3:
-                    System.out.println("\n=== Input Alpa ===");
+                    System.out.println("-------------------------------");
+                    System.out.println("|======== Input Alpa =========|");
+                    System.out.println("-------------------------------");
                     System.out.println("Pilih nama mahasiswa yang akan anda input alpa:");
                     System.out.println("1. "+mhs1[1]);
                     System.out.println("0. Kembali");
@@ -353,7 +371,9 @@ public class KompenMahasiswa {
                         break;
 
                     case 4:
-                    System.out.println("\n===== Manage Keamanan =====");
+                    System.out.println("-------------------------------");
+                    System.out.println("|======= Manage Keamanan =====|");
+                    System.out.println("-------------------------------");
                     System.out.println("1. Admin");
                     System.out.println("2. Dosen");
                     System.out.println("3. Mahasiswa");
@@ -371,22 +391,24 @@ public class KompenMahasiswa {
                         choicee=false;
                         break;
                     }
-                    System.out.println("\n===== Manage Keamanan =====");
+                    System.out.println("-------------------------------");
+                    System.out.println("|====== Manage Keamanan ======|");
+                    System.out.println("-------------------------------");
                     System.out.println("Pilih akun: ");
                     if(aman==1){
-                            System.out.println("1. "+adm[0]);
+                            System.out.println("1. "+adm1[1]);
                             for(int i=0; i<acc.length; i++){
-                                acc[i]=adm[i];
+                                acc[i]=adm1[1];
                             }
                         } else if(aman==2){
-                            System.out.println("1. "+dsn[0]);
+                            System.out.println("1. "+dsn1[1]);
                             for(int i=0; i<acc.length; i++){
-                                acc[i]=dsn[i];
+                                acc[i]=dsn1[1];
                             }
                         } else if(aman==3){
-                            System.out.println("1. "+mhs[0]);
+                            System.out.println("1. "+mhs1[1]);
                             for(int i=0; i<acc.length; i++){
-                                acc[i]=mhs[i];
+                                acc[i]=mhs1[1];
                             }
                         }
                         System.out.println("\n0. Kembali");
@@ -396,7 +418,9 @@ public class KompenMahasiswa {
                             break;
                         }
 
-                        System.out.println("\n===== Manage Keamanan =====");
+                        System.out.println("-------------------------------");
+                        System.out.println("|====== Manage Keamanan ======|");
+                        System.out.println("-------------------------------");
                         System.out.println("1. Ubah Username");
                         System.out.println("2. Ubah Password");
                         System.out.println("\n0. Kembali");
@@ -426,7 +450,7 @@ public class KompenMahasiswa {
                 }
                 boolean edit=true;
                     while(edit){
-                        System.out.print("Masukkan "+usnPw[editCre-1]+" "+acc[0]+" baru: ");
+                        System.out.print("Masukkan "+usnPw[editCre-1]+ " baru: ");
                         String newUsn= scanner.nextLine();
                         if(newUsn.equals(acc[editCre-1])){
                             System.out.println(usnPw[editCre-1]+" baru tidak boleh sama.");
@@ -447,7 +471,9 @@ public class KompenMahasiswa {
                         break;
 
                  case 5:
-                 System.out.println("\n=== Help ===");
+                 System.out.println("-------------------------------");
+                 System.out.println("|============ Help ===========|");
+                 System.out.println("-------------------------------");
                  System.out.println("Maaf, untuk saat ini menu Help belum tersedia.");
                  System.out.println("0. Kembali");
                  System.out.println("1. Keluar");
@@ -489,14 +515,17 @@ public class KompenMahasiswa {
         }
 
             while (loggedInDosen) {
-            System.out.println("\n=== Sistem Kompen Mahasiswa ===");
-            System.out.println("1. Profile");
-            System.out.println("2. Input Tugas");
-            System.out.println("3. Keamanan");
-            System.out.println("4. Help");
-            System.out.println("5. Contact Admin");
-            System.out.println("6. Logout");
-            System.out.println("7. Quit");
+            System.out.println("-------------------------------");
+            System.out.println("|== Sistem Kompen Mahasiswa ==|");
+            System.out.println("-------------------------------");
+            System.out.println("|1. Profile                   |");
+            System.out.println("|2. Input Tugas               |");
+            System.out.println("|3. Keamanan                  |");
+            System.out.println("|4. Help                      |");
+            System.out.println("|5. Contact Admin             |");
+            System.out.println("|6. Logout                    |");
+            System.out.println("|7. Quit                      |");
+            System.out.println("-------------------------------");
             System.out.print("Masukkan pilihan anda: ");
             int choice = scanner.nextInt();
             boolean choicee= true;
@@ -504,8 +533,12 @@ public class KompenMahasiswa {
             while(choicee){
             switch (choice) {
                 case 1:
-                    System.out.println("\n=== Profil Dosen ===");
-                    System.out.println("Nama:       "+dsn1[1]);
+                    System.out.println("-------------------------------");
+                    System.out.println("|====== Profile Dosen ========|");
+                    System.out.println("-------------------------------");
+                    System.out.println("Nama  :  "+dsn1[1]);
+                    System.out.println("NIDN  :  "+dsn1[2]);
+                    System.out.println("E-mail:  "+dsn1[3]);
                     System.out.println("0. Kembali");
                     System.out.println("1. Keluar");
                     System.out.print("Masukkan pilihan anda: ");
@@ -527,7 +560,9 @@ public class KompenMahasiswa {
                 case 2:
                 boolean list= true;
                 while (list) {
-                    System.out.println("\n=== Input Tugas ===");
+                    System.out.println("-------------------------------");
+                    System.out.println("|======== Input Tugas ========|");
+                    System.out.println("-------------------------------");
                     System.out.println("List tugas:");
                     for (int i = 1; i < tugas.length; i++) {
                         if (tugas[i] != null) {
@@ -544,7 +579,9 @@ public class KompenMahasiswa {
                       break;
                     } else if (pilih1 == 99) {
                         scanner.nextLine();
-                        System.out.println("\n=== Input Tugas ===");
+                        System.out.println("-------------------------------");
+                        System.out.println("|======== Input Tugas ========|");
+                        System.out.println("-------------------------------");
                         System.out.print("Masukkan nama tugas: ");
                         String tugasBaru = scanner.nextLine();
                         int edit= 0;
@@ -599,7 +636,9 @@ public class KompenMahasiswa {
                     } else if(pilih1<tersedia){
                         boolean menu1 = true;
                         while (menu1) {
-                          System.out.println("\n===== Detail Tugas =====");
+                            System.out.println("-------------------------------");
+                            System.out.println("|======= Detail Tugas ========|");
+                            System.out.println("-------------------------------");
                             System.out.println("Nama Tugas      : " + tugas[pilih1]);
                             System.out.println("Pemberi Tugas   : " + pemberiTugas[pilih1]);
                             System.out.println("Jumlah Kompen   : " + jmlKompen[pilih1] + " jam");
@@ -693,7 +732,9 @@ public class KompenMahasiswa {
                 break;
 
                 case 3:
-                    System.out.println("\n===== Keamanan =====");
+                    System.out.println("-------------------------------");
+                    System.out.println("|========= Keamanan ==========|");
+                    System.out.println("-------------------------------");
                     System.out.println("1. Ubah Username");
                     System.out.println("2. Ubah Password");
                     System.out.println("0. Kembali");
@@ -736,7 +777,9 @@ public class KompenMahasiswa {
                         break;
 
                 case 4:
-                            System.out.println("\n=== Help ===");
+                            System.out.println("-------------------------------");
+                            System.out.println("|============ Help ===========|");
+                            System.out.println("-------------------------------");
                             System.out.println("Maaf, untuk saat ini menu Help belum tersedia.");
                             System.out.println("0. Kembali");
                             System.out.println("1. Keluar");
@@ -759,7 +802,9 @@ public class KompenMahasiswa {
                             }
                     break;
                 case 5:
-                            System.out.println("\n=== Contact Admin ===");
+                            System.out.println("-------------------------------");
+                            System.out.println("|======= Contact Admin =======|");
+                            System.out.println("-------------------------------");;
                             System.out.println("Maaf, untuk saat ini menu Contact Admin belum tersedia.");
                             System.out.println("0. Kembali");
                             System.out.println("1. Keluar");
@@ -801,17 +846,20 @@ public class KompenMahasiswa {
   
             while(loggedInMahasiswa){
                 byte mhsChoice;
-                System.out.println("\n=== Sistem Kompen Mahasiswa ===");
-                System.out.println("1. Profile");
-                System.out.println("2. Alpaku");
-                System.out.println("3. Tugas Tersedia");
-                System.out.println("4. History Tugas");
-                System.out.println("5. Peraturan Sistem Kompen Mahasiswa");
-                System.out.println("6. Keamanan");
-                System.out.println("7. Help");
-                System.out.println("8. Contact Admin");
-                System.out.println("9. Logout");
-                System.out.println("10. Quit");
+                System.out.println("--------------------------------------");
+                System.out.println("|  ==== Sistem Kompen Mahasiswa ====  |");
+                System.out.println("--------------------------------------");
+                System.out.println("|1. Profile                           |");
+                System.out.println("|2. Alpaku                            |");
+                System.out.println("|3. Tugas Tersedia                    |");
+                System.out.println("|4. History Tugas                     |");
+                System.out.println("|5. Peraturan Sistem Kompen Mahasiswa |");
+                System.out.println("|6. Keamanan                          |");
+                System.out.println("|7. Help                              |");
+                System.out.println("|8. Contact Admin                     |");
+                System.out.println("|9. Logout                            |");
+                System.out.println("|10. Quit                             |");
+                System.out.println("--------------------------------------");
                 System.out.print("Masukkan pilihan anda: ");
                 mhsChoice = scanner.nextByte();
                 boolean choicee= true;
@@ -820,7 +868,9 @@ public class KompenMahasiswa {
                 switch (mhsChoice) {
                     case 1: // Profile
                         byte subSubChoice11;
-                        System.out.println("\n=== Profil Mahasiswa ===");
+                        System.out.println("-------------------------------");
+                        System.out.println("|===== Profile Mahasiswa =====|");
+                        System.out.println("-------------------------------");
                         System.out.println("Nama            : "+mhs1[1]);
                         System.out.println("NIM             : "+mhs1[2]);
                         System.out.println("Kelas           : "+mhs1[3]);
@@ -853,7 +903,9 @@ public class KompenMahasiswa {
                         boolean alpaku=true;
                         int rekap= smtSkrg+1;
                             while(alpaku){
-                                System.out.println("\n===== Alpaku =====");
+                                 System.out.println("-------------------------------");
+                                 System.out.println("|=========== Alpaku ==========|");
+                                 System.out.println("-------------------------------");
                                 for(int i=1; i<smtSkrg+1; i++){
                                     System.out.println(i+". "+"Semester "+i);
                                 }
@@ -868,7 +920,9 @@ public class KompenMahasiswa {
                                 boolean subMenu= true;
                                 while(subMenu){
                                     int i= subChoice2;
-                                        System.out.println("\n=== Alpaku - Semester "+i+" ===");
+                                        System.out.println("-------------------------------");
+                                        System.out.println("|==== Alpaku - Semester "+i+" ====|");
+                                        System.out.println("-------------------------------");
                                         System.out.println("Jumlah Alpa Semester "+i+": " + alpa[i] + " jam");
                                         System.out.println("Total jam tugas kompen Semester "+i+": " + kompen[i] + " jam");
                                         System.out.println("0. Kembali");
@@ -889,7 +943,9 @@ public class KompenMahasiswa {
                                         break;
                                     }
                                 }else if(subChoice2==rekap){
-                                        System.out.println("\n=== Alpaku - Rekap Tugas Kompen ===");
+                                        System.out.println("-------------------------------");
+                                        System.out.println("| Alpaku - Rekap Tugas Kompen |");
+                                        System.out.println("-------------------------------");
                                         System.out.println("Total jam alpa anda     : " + totalAlpa + " jam");
                                         System.out.println("Total jam kompen anda   : " + totalKompen + " jam");
                                         System.out.println("0. Kembali");
@@ -920,7 +976,9 @@ public class KompenMahasiswa {
                     case 3: // Tugas Tersedia
                     boolean tgs= true;
                         while (tgs) {
-                            System.out.println("\n=== Tugas Tersedia ===");
+                            System.out.println("-------------------------------");
+                            System.out.println("|====== Tugas Tersedia =======|");
+                            System.out.println("-------------------------------");;
                             for (int i = 1; i < tugas.length; i++) {
                                 if (tugas[i] != null) {
                                 System.out.println(i + ". " + tugas[i]);
@@ -937,7 +995,9 @@ public class KompenMahasiswa {
                                 } else if(pilih1<tersedia){
                                     boolean menu1 = true;
                                     while (menu1) {
-                                      System.out.println("\n===== Detail Tugas =====");
+                                        System.out.println("-------------------------------");
+                                        System.out.println("|======= Detail Tugas ========|");
+                                        System.out.println("-------------------------------");
                                         System.out.println("Nama Tugas      : " + tugas[pilih1]);
                                         System.out.println("Pemberi Tugas   : " + pemberiTugas[pilih1]);
                                         System.out.println("Jumlah Kompen   : " + jmlKompen[pilih1] + " jam");
@@ -1015,7 +1075,9 @@ public class KompenMahasiswa {
                         byte subChoice4;
                         boolean history=true;
                         while (history) {
-                            System.out.println("\n=== History Tugas ===");
+                            System.out.println("-------------------------------");
+                            System.out.println("|====== History Tugas ========|");
+                            System.out.println("-------------------------------");
                             boolean ada= false;
                             for(int i=1; i<doneJdl.length; i++){
                                 if(doneJdl[i]==null){
@@ -1065,7 +1127,9 @@ public class KompenMahasiswa {
                     case 5: // Peraturan Sistem Kompen Mahasiswa
                         byte subChoice5;
                         while (true) {
-                            System.out.println("\n=== Peraturan Sistem Kompen Mahasiswa ===");
+                            System.out.println("----------------------------------------");
+                            System.out.println("|= Peraturan Sistem Kompen Mahasiswa = |");
+                            System.out.println("----------------------------------------");
                             System.out.println("1. Kompensasi tidak menghapuskan jumlah ketidakhadiran");
                             System.out.println("2. Kompensasi tidak boleh digantikan dalam bentuk uang atau barang ");
                             System.out.println("3. Besarnya kompensasi ditentukan berdasarkan jumlah jam alpa dikalikan dua");
@@ -1094,7 +1158,9 @@ public class KompenMahasiswa {
                         break;
 
                     case 6: //Keamanan
-                    System.out.println("\n===== Keamanan =====");
+                    System.out.println("-------------------------------");
+                    System.out.println("|========= Keamanan ==========|");
+                    System.out.println("-------------------------------");
                     System.out.println("1. Ubah Username");
                     System.out.println("2. Ubah Password");
                     System.out.println("0. Kembali");
@@ -1144,7 +1210,9 @@ public class KompenMahasiswa {
                     case 7: // Help
                         byte subChoice6;
                         while (true) {
-                            System.out.println("\n=== Help ===");
+                            System.out.println("-------------------------------");
+                            System.out.println("|=========== Help ============|");
+                            System.out.println("-------------------------------");
                             System.out.println("Maaf, untuk saat ini menu Help belum tersedia.");
                             System.out.println("0. Kembali");
                             System.out.println("1. Keluar");
@@ -1170,7 +1238,9 @@ public class KompenMahasiswa {
                     case 8: // Contact Admin
                         byte subChoice7;
                         while (true) {
-                            System.out.println("\n=== Contact Admin ===");
+                            System.out.println("-------------------------------");
+                            System.out.println("|====== Contact Admin ========|");
+                            System.out.println("-------------------------------");
                             System.out.println("Maaf, untuk saat ini menu Contact Admin belum tersedia.");
                             System.out.println("0. Kembali");
                             System.out.println("1. Keluar");
