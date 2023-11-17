@@ -13,7 +13,7 @@ public class KompenMahasiswa {
 
         String adm[]= {"admin1", "adminkompen"};
         String dsn[]= {"0123456789", "0123456789"};
-        String mhs[]= {"2341720257", "2341720257"};
+        String mhs[]= {"2341720258", "2341720258"};
 
         boolean loggedInAdmin = false, loggedInDosen = false, loggedInMahasiswa = false, superuser = false;
 
@@ -78,7 +78,7 @@ public class KompenMahasiswa {
         //Data mhs1
         String[] mhs1= {"Mahasiswa",
         "Salsabila Mahda Runisha", 
-        "2341720257",
+        "2341720258",
         "TI - 1F",
         "5",
         "Teknologi Informasi",
