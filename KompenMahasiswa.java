@@ -6,9 +6,10 @@ public class KompenMahasiswa {
         // Initializations
         Scanner scanner = new Scanner(System.in);
         int totalAlpa[]= new int[5], totalKompen[]= new int[5];
-        int[][] alpa= new int[5][15], kompen= new int[5][15];
-        String[] tugas = new String[100], pemberiTugas = new String[100], doneJdl= new String[100], donePmbr= new String[100];
-        int[] jmlKompen= new int[100], kuota= new int[100], tgl= new int[100], bln= new int[100], thn= new int[100], tglDone= new int[100], blnDone= new int[100], thnDone= new int[100], jmlDone= new int[100];
+        int[][] tglDone= new int[100][100], blnDone= new int[100][100], thnDone= new int[100][100], jmlDone= new int[100][100], alpa= new int[5][15], kompen= new int[5][15];
+        String[] tugas = new String[100], pemberiTugas = new String[100]; 
+        int[] jmlKompen= new int[100], kuota= new int[100], tgl= new int[100], bln= new int[100], thn= new int[100];
+        String[][]  doneJdl= new String[100][100], donePmbr= new String[100][100];
         int tersedia= 0, in=0;
         int smtSkrg[]= {0,5,3,2};
 
@@ -361,8 +362,8 @@ public class KompenMahasiswa {
                     System.out.println("|======== Input Alpa =========|");
                     System.out.println("-------------------------------");
                     System.out.println("Pilih nama mahasiswa yang akan anda input alpa:");
-                    for(int i=0; i<mhsData.length; i++){
-                        System.out.println(i+". "+mhsData[i][1]);
+                    for(int i=1; i<mhsData.length; i++){
+                        System.out.println(i+". "+mhsData[i][0]);
                     }
                     System.out.println("0. Kembali");
                     System.out.print("Masukkan pilihan anda: ");
@@ -374,36 +375,37 @@ public class KompenMahasiswa {
                         if(inputAlpa<=mhsData.length){
                         boolean case1= true;
                         while(case1){
-                            System.out.print("\nMasukkan semester: ");
+                            System.out.println("\nSemester saat ini: "+smtSkrg[inputAlpa]);
+                            System.out.print("Masukkan semester: ");
                             int smtEdit= scanner.nextInt();
-                            if(smtEdit > Integer.valueOf(smtSkrg[in])){
+                            if(smtEdit > Integer.valueOf(smtSkrg[inputAlpa])){
                                 System.out.println("Semester tidak valid.");
                                 continue;
                             }
-                            System.out.println("Jumlah jam alpa semester "+smtEdit+" saat ini: "+alpa[smtEdit]+" jam");
+                            System.out.println("Jumlah jam alpa semester "+smtEdit+" saat ini: "+alpa[inputAlpa][smtEdit]+" jam");
                             System.out.print("Masukkan jumlah jam alpa yang ingin ditambahkan: ");
                             int alpaPlus= scanner.nextInt();
 
-                            alpa[in][smtEdit]+=alpaPlus;
-                            for(int j=1; j<alpa[in].length; j++)
+                            alpa[inputAlpa][smtEdit]+=alpaPlus;
+                            for(int j=1; j<alpa[inputAlpa].length; j++)
                                 if(j!=smtEdit) continue;
                                 else if(j==smtEdit){
-                                totalAlpa[in]+= alpa[in][j];
-                                kompen[in][j] = alpa[in][j] * (2 * ((smtSkrg[in]+1) - j));
-                                totalKompen[in]+= kompen[in][j];
+                                totalAlpa[inputAlpa]+= alpa[inputAlpa][j];
+                                kompen[inputAlpa][j] = alpa[inputAlpa][j] * (2 * ((smtSkrg[inputAlpa]+1) - j));
+                                totalKompen[inputAlpa]+= kompen[inputAlpa][j];
                                 }
 
                             System.out.println("\nAlpa berhasil ditambahkan!");
-                            System.out.println("Jumlah jam alpa "+mhsData[in][1]+" semester "+smtEdit+" saat ini adalah: "+ alpa[in][smtEdit]+ " jam,");
-                            System.out.println("dengan total jam kompen di semester "+smtEdit+" adalah: "+ kompen[in][smtEdit]+" jam.");
+                            System.out.println("Jumlah jam alpa "+mhsData[inputAlpa][0]+" semester "+smtEdit+" saat ini adalah: "+ alpa[inputAlpa][smtEdit]+ " jam,");
+                            System.out.println("dengan total jam kompen di semester "+smtEdit+" adalah: "+ kompen[inputAlpa][smtEdit]+" jam.");
                             case1= false;
                             break;
                         }
-                        totalAlpa[in]= 0;
-                        totalKompen[in]= 0;
-                        for(int i=1; i<alpa.length; i++){
-                            totalAlpa[in]+= alpa[in][i];
-                            totalKompen[in]+= kompen[in][i];
+                        totalAlpa[inputAlpa]= 0;
+                        totalKompen[inputAlpa]= 0;
+                        for(int i=1; i<alpa[inputAlpa].length; i++){
+                            totalAlpa[inputAlpa]+= alpa[inputAlpa][i];
+                            totalKompen[inputAlpa]+= kompen[inputAlpa][i];
                             }
                             break;
                         }
@@ -793,7 +795,7 @@ public class KompenMahasiswa {
                     while(verif){
                     System.out.print("\nMasukkan Password anda saat ini: ");
                     String ver= scanner.nextLine();
-                    if(ver.equals(dsn[1])){
+                    if(ver.equals(dsn[1][in-1])){
                         verif=false;
                         break;
                     } else{
@@ -805,11 +807,11 @@ public class KompenMahasiswa {
                     while(edit){
                         System.out.print("Masukkan "+usnPw[aman-1]+" baru: ");
                         String newUsn= scanner.nextLine();
-                        if(newUsn.equals(dsn[in][aman-1])){
+                        if(newUsn.equals(dsn[aman-1][in-1])){
                             System.out.println(usnPw[aman-1]+" baru tidak boleh sama.");
                             continue;
                         } else{
-                            dsn[in][aman-1]=newUsn;
+                            dsn[aman-1][in]=newUsn;
                             System.out.println(usnPw[aman-1]+" berhasil diubah!");
                             edit=false;
                             break;
@@ -1047,26 +1049,26 @@ public class KompenMahasiswa {
                                             case 0:
                                                 break;
                                             case 1:
-                                            for(int i=1; i<doneJdl.length; i++){
-                                                if(doneJdl[i]!=null){
+                                            for(int i=1; i<doneJdl[in].length; i++){
+                                                if(doneJdl[in][i]!=null){
                                                     continue;
-                                                } else if(doneJdl[i]==null){
-                                                    doneJdl[i]= tugas[pilih1];
-                                                    donePmbr[i]= pemberiTugas[pilih1];
-                                                    jmlDone[i]= jmlKompen[pilih1];
+                                                } else if(doneJdl[in][i]==null){
+                                                    doneJdl[in][i]= tugas[pilih1];
+                                                    donePmbr[in][i]= pemberiTugas[pilih1];
+                                                    jmlDone[in][i]= jmlKompen[pilih1];
                                                     System.out.println("\nMasukkan tanggal: ");
                                                     System.out.print("Tanggal (DD): ");
-                                                    tglDone[i]= scanner.nextInt();
+                                                    tglDone[in][i]= scanner.nextInt();
                                                     System.out.print("Bulan (MM): ");
-                                                    blnDone[i]= scanner.nextInt();
+                                                    blnDone[in][i]= scanner.nextInt();
                                                     System.out.print("Tahun (YYYY): ");
-                                                    thnDone[i]= scanner.nextInt();
+                                                    thnDone[in][i]= scanner.nextInt();
                                                     if(totalKompen[in]<jmlKompen[pilih1]){
                                                         totalKompen[in]=0;
                                                     } else
                                                     totalKompen[in]-= jmlKompen[pilih1];
 
-                                                    for(int j= kompen.length-1; j>=1; j--){
+                                                    for(int j= kompen[in].length-1; j>=1; j--){
                                                         if(kompen[in][j]==0){
                                                             continue;
                                                         } else if(kompen[in][j]!=0){
@@ -1115,23 +1117,23 @@ public class KompenMahasiswa {
                             System.out.println("-------------------------------");
                             boolean ada= false;
                             for(int i=1; i<doneJdl.length; i++){
-                                if(doneJdl[i]==null){
+                                if(doneJdl[in][i]==null){
                                     continue;
-                                } else if(doneJdl[i]!=null){
+                                } else if(doneJdl[in][i]!=null){
                                     ada=true;
                                 } 
                             } if(!ada){
                                 System.out.println("Belum ada tugas kompen yang dikerjakan.");
                                 System.out.println("Buka menu Tugas Tersedia untuk melihat tugas kompen yang dapat dikerjakan.");
                                 } else if(ada){
-                                for(int i=1; i<doneJdl.length; i++){
-                                    if(doneJdl[i]==null){
+                                for(int i=1; i<doneJdl[in].length; i++){
+                                    if(doneJdl[in][i]==null){
                                         break;
                                     } else{
-                                    System.out.println(+i+". "+doneJdl[i]);
-                                    System.out.println("Pemberi Tugas       : "+donePmbr[i]);
-                                    System.out.println("Jumlah Kompen       : "+jmlDone[i]);
-                                    System.out.println("Tanggal Pengerjaan  : "+tglDone[i]+"/"+blnDone[i]+"/"+thnDone[i]);
+                                    System.out.println(+i+". "+doneJdl[in][i]);
+                                    System.out.println("Pemberi Tugas       : "+donePmbr[in][i]);
+                                    System.out.println("Jumlah Kompen       : "+jmlDone[in][i]);
+                                    System.out.println("Tanggal Pengerjaan  : "+tglDone[in][i]+"/"+blnDone[in][i]+"/"+thnDone[in][i]);
                                     System.out.println();
                                     }
                                 }
@@ -1217,7 +1219,7 @@ public class KompenMahasiswa {
                     while(verif){
                     System.out.print("\nMasukkan Password anda saat ini: ");
                     String ver= scanner.nextLine();
-                    if(ver.equals(mhs[1])){
+                    if(ver.equals(mhs[1][in-1])){
                         verif=false;
                         break;
                     } else{
@@ -1229,11 +1231,11 @@ public class KompenMahasiswa {
                     while(edit){
                         System.out.print("Masukkan "+usnPw[aman-1]+" baru: ");
                         String newUsn= scanner.nextLine();
-                        if(newUsn.equals(mhs[aman-1])){
+                        if(newUsn.equals(mhs[aman-1][in-1])){
                             System.out.println(usnPw[aman-1]+" baru tidak boleh sama.");
                             continue;
                         } else{
-                            mhs[aman-1][in]=newUsn;
+                            mhs[aman-1][in-1]=newUsn;
                             System.out.println(usnPw[aman-1]+" berhasil diubah!");
                             edit=false;
                             break;
