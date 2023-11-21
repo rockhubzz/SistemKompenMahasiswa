@@ -90,19 +90,19 @@ public class KompenMahasiswa {
         String[][] mhsData= {{"Mahasiswa"},{
         "Meganthropus Paleojavanicus",
         "TI - 1F",
-        String.valueOf(smtSkrg[0]),
+        String.valueOf(smtSkrg[1]),
         "Teknologi Informasi",
         "Teknik Informatika"
         },{
         "Pithecanthropus Mojokertensis",
         "TI - 1E",
-        String.valueOf(smtSkrg[1]),
+        String.valueOf(smtSkrg[2]),
         "Teknologi Informasi",
         "Teknik Informatika"
         }, {
         "Pithecanthropus Soloensis",
         "SIB - 1A",
-        String.valueOf(smtSkrg[2]),
+        String.valueOf(smtSkrg[3]),
         "Teknologi Informasi",
         "Sistem Informasi Bisnis"
         }
