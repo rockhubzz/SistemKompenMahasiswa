@@ -15,7 +15,7 @@ public class KompenMahasiswa {
 
         String adm[][]= {{"admin1", "admin2", "admin3"}, {"adminkompen", "kompenadmin", "adminadmin"}};
         String dsn[][]= {{"dosen1", "dosen2", "dosen3"}, {"dosenkompen", "kompendosen", "dosendosen"}};
-        String mhs[][]= {{"mahasiswa1", "mahasiswa2", "2341720257"}, {"mahakompen", "kompenmaha", "2341720257"}};
+        String mhs[][]= {{"mahasiswa1", "mahasiswa2", "2341720258"}, {"mahakompen", "kompenmaha", "2341720258"}};
 
         boolean loggedInAdmin = false, loggedInDosen = false, loggedInMahasiswa = false;
 
@@ -125,7 +125,7 @@ public class KompenMahasiswa {
             kompen[i][j] = alpa[i][j] * (int) Math.pow(2, smtSkrg[i]-j);
             totalKompen[i] += kompen[i][j];
             }
-        }             
+        }              
 
         // Login
         while (!(loggedInAdmin && loggedInDosen && loggedInMahasiswa)) {
@@ -253,6 +253,9 @@ public class KompenMahasiswa {
                     System.out.println("-------------------------------");
                         for(int i=1; i<level.length; i++){
                         System.out.println(i+". "+level[i][0]);
+                    if(auditMenu<=3 && auditMenu>0){
+                        for(int i=1; i<level.length; i++){
+                        System.out.println("\n"+i+". "+level[i][0]);
                         }
                         System.out.println("\n0. Kembali");
                         System.out.print("Pilih "+level[0][0]+" yang ingin diedit: ");
