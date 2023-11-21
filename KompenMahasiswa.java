@@ -15,7 +15,7 @@ public class KompenMahasiswa {
 
         String adm[][]= {{"admin1", "admin2", "admin3"}, {"adminkompen", "kompenadmin", "adminadmin"}};
         String dsn[][]= {{"dosen1", "dosen2", "dosen3"}, {"dosenkompen", "kompendosen", "dosendosen"}};
-        String mhs[][]= {{"mahasiswa1", "mahasiswa2", "2341720257"}, {"mahakompen", "kompenmaha", "2341720257"}};
+        String mhs[][]= {{"mahasiswa1", "mahasiswa2", "2341720258"}, {"mahakompen", "kompenmaha", "2341720258"}};
 
         boolean loggedInAdmin = false, loggedInDosen = false, loggedInMahasiswa = false, superuser = false;
 
