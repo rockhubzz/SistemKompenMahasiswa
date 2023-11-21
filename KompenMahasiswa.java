@@ -125,7 +125,7 @@ public class KompenMahasiswa {
             kompen[i][j] = alpa[i][j] * (int) Math.pow(2, smtSkrg[i]-j);
             totalKompen[i] += kompen[i][j];
             }
-        }             
+        }              
 
         // Login
         while (!(loggedInAdmin && loggedInDosen && loggedInMahasiswa)) {
@@ -274,8 +274,8 @@ public class KompenMahasiswa {
                         break;
                     }
                     if(auditMenu<=3 && auditMenu>0){
-                        for(int i=0; i<level.length; i++){
-                        System.out.println("\n"+i+". "+level[i][1]);
+                        for(int i=1; i<level.length; i++){
+                        System.out.println("\n"+i+". "+level[i][0]);
                         }
                         System.out.print("Pilih "+level[in][0]+" yang ingin diedit: ");
                         int nmEdit= scanner.nextInt();
@@ -361,8 +361,8 @@ public class KompenMahasiswa {
                     System.out.println("|======== Input Alpa =========|");
                     System.out.println("-------------------------------");
                     System.out.println("Pilih nama mahasiswa yang akan anda input alpa:");
-                    for(int i=0; i<mhsData.length; i++){
-                        System.out.println(i+". "+mhsData[i][1]);
+                    for(int i=1; i<mhsData.length; i++){
+                        System.out.println(i+". "+mhsData[i][0]);
                     }
                     System.out.println("0. Kembali");
                     System.out.print("Masukkan pilihan anda: ");
