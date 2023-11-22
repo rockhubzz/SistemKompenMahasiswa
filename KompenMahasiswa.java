@@ -125,7 +125,8 @@ public class KompenMahasiswa {
                 kompen[i][j] = alpa[i][j] * (int) Math.pow(2, smtSkrg[i] - j + 1);
                 totalKompen[i] += kompen[i][j];
             }
-        }             
+        }   
+              
 
         // Login
         while (!(loggedInAdmin && loggedInDosen && loggedInMahasiswa)) {
@@ -335,7 +336,8 @@ public class KompenMahasiswa {
                     }
                     }
                     break;
-
+                }
+            }
                 case 3:
                     System.out.println("-------------------------------");
                     System.out.println("|======== Input Alpa =========|");
@@ -1291,5 +1293,7 @@ public class KompenMahasiswa {
             }
         }
         scanner.close();
-    }
+    
 }
+}
+    
