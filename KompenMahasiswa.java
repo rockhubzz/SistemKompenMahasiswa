@@ -120,9 +120,9 @@ public class KompenMahasiswa {
 
         //hitung kompen, totalkompen, totalalpa
         for (int i = 0; i < smtSkrg.length; i++) {
-            for(int j=1; j<alpa[i].length; j++){
+            for(int j=0; j<alpa[i].length; j++){
             totalAlpa[i] += alpa[i][j];
-            kompen[i][j] = alpa[i][j] * (int) Math.pow(2, smtSkrg[i]-j + 1);
+            kompen[i][j] = alpa[i][j] * (int) Math.pow(2, smtSkrg[i]-j);
             totalKompen[i] += kompen[i][j];
             }
         }             
