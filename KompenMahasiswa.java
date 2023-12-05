@@ -4,9 +4,10 @@ public class KompenMahasiswa {
     //Initializations
     public static int totalAlpa[]= new int[5], totalKompen[]= new int[5];
     public static int[][] tglDone= new int[100][100], blnDone= new int[100][100], thnDone= new int[100][100], jmlDone= new int[100][100], alpa= new int[5][15], kompen= new int[5][15];
-    public static String[] tugas = new String[100], pemberiTugas = new String[100]; 
+    public static String tugas[][] = new String[100][100]; 
     public static int[] jmlKompen= new int[100], kuota= new int[100], tgl= new int[100], bln= new int[100], thn= new int[100];
     public static String[][] doneJdl= new String[100][100], donePmbr= new String[100][100];
+    public static String[][][] listReq= new String[10][100][9], tugasDone= new String [10][100][6];
     public static int tersedia= 0, in=0;
     public static int smtSkrg[]= {0,5,3,2};
 
@@ -14,55 +15,6 @@ public class KompenMahasiswa {
     public static String adm[][]= {{"admin1", "admin2", "admin3"}, {"adminkompen", "kompenadmin", "adminadmin"}};
     public static String dsn[][]= {{"dosen1", "dosen2", "dosen3"}, {"dosenkompen", "kompendosen", "dosendosen"}};
     public static String mhs[][]= {{"mahasiswa1", "mahasiswa2", "2341720257"}, {"mahakompen", "kompenmaha", "2341720257"}};
-
-    //array alpa mhs1
-    static  {
-    alpa[1][1]= 1;
-    alpa[1][2]= 4;
-    alpa[1][3]= 3;
-    alpa[1][4]= 2;
-    alpa[1][5]= 0;
-
-    //array alpa mhs2
-    alpa[2][1]=0;
-    alpa[2][2]=2;
-    alpa[2][3]=1;
-
-    //array alpa mhs3
-    alpa[3][1]=3;
-    alpa[3][2]=1;
-
-    //array tugas tersedia
-    tugas[1] = "JIP";
-    pemberiTugas[1] = "Mustika Mentari, S.Kom, M.Kom";
-    jmlKompen[1]= 100;
-    kuota[1]= 1;
-    tgl[1]= 28; bln[1]= 9; thn[1]= 2023;
-
-    tugas[2] = "Editing Word";
-    pemberiTugas[2] = "Meyti Eka Apriani, ST, MT";
-    jmlKompen[2]= 2;
-    kuota[2]= 1;
-    tgl[2]= 1; bln[2]= 10; thn[2]= 2023;
-
-    tugas[3] = "Membantu penulisan buku";
-    pemberiTugas[3] = "Meyti Eka Apriani, ST, MT";
-    jmlKompen[3]= 42;
-    kuota[3]= 1;
-    tgl[3]= 3; bln[3]= 10; thn[3]= 2023;
-
-    tugas[4] = "Rekap nilai";
-    pemberiTugas[4] = "Kadek Suarjuna Batubulan";
-    jmlKompen[4]= 20;
-    kuota[4]= 5;
-    tgl[4]= 5; bln[4]= 10; thn[4]= 2023;
-
-    tugas[5] = "Edit form surat";
-    pemberiTugas[5] = "Kadek Suarjuna Batubulan";
-    jmlKompen[5]= 12;
-    kuota[5]= 1;
-    tgl[5]= 25; bln[5]= 10; thn[5]= 2023;
-    }
 
     public static String[][] mhsData= {{"Mahasiswa"},{
         //mhs1
@@ -96,10 +48,64 @@ public class KompenMahasiswa {
         {"Admin"},{"Bpk. Ucup Saifullah"}, {"Bpk. Sigit"}, {"Bpk. Rendang"}
     };
 
+
+    //array alpa mhs1
+    static  {
+    alpa[1][1]= 1;
+    alpa[1][2]= 4;
+    alpa[1][3]= 3;
+    alpa[1][4]= 2;
+    alpa[1][5]= 0;
+
+    //array alpa mhs2
+    alpa[2][1]=0;
+    alpa[2][2]=2;
+    alpa[2][3]=1;
+
+    //array alpa mhs3
+    alpa[3][1]=3;
+    alpa[3][2]=1;
+
+    //array tugas tersedia
+    //tugas[urutan][
+        // judul, 
+        // jumlah jam kompen,
+        // kuota mahasiswa,
+        // tgl, bulan, thn]
+
+    tugas[1][0] = "JIP";
+    tugas[1][1] = dsnData[1][0];
+    tugas[1][2]= String.valueOf(100);
+    tugas[1][3]= String.valueOf(0);
+    tugas[1][4]= String.valueOf(20); tugas[1][5]= String.valueOf(9); tugas[1][6]= String.valueOf(2023);
+    
+    tugas[2][0] = "Editing Word";
+    tugas[2][1] = dsnData[1][0];
+    tugas[2][2] = String.valueOf(2);
+    tugas[2][3] = String.valueOf(1);
+    tugas[2][4] = String.valueOf(1); tugas[2][5] = String.valueOf(10); tugas[2][6] = String.valueOf(2023);
+    
+    tugas[3][0] = "Membantu Penulisan Buku";
+    tugas[3][1] = dsnData[2][0];
+    tugas[3][2] = String.valueOf(42);
+    tugas[3][3] = String.valueOf(1);
+    tugas[3][4] = String.valueOf(3); tugas[3][5] = String.valueOf(10); tugas[3][6] = String.valueOf(2023);
+    
+    tugas[4][0] = "Rekap Nilai";
+    tugas[4][1] = dsnData[3][0];
+    tugas[4][2] = String.valueOf(20);
+    tugas[4][3] = String.valueOf(5);
+    tugas[4][4] = String.valueOf(5); tugas[4][5] = String.valueOf(10); tugas[4][6] = String.valueOf(2023);
+    
+    tugas[5][0] = "Edit form surat";
+    tugas[5][1] = dsnData[3][0];
+    tugas[5][2] = String.valueOf(20);
+    tugas[5][3] = String.valueOf(5);
+    tugas[5][4] = String.valueOf(20); tugas[5][5] = String.valueOf(10); tugas[5][6] = String.valueOf(2023);
+        }
+
     private static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
-
-
           //hitung kompen, totalkompen, totalalpa
         for (int i = 0; i < smtSkrg.length; i++) {
             for(int j=1; j<alpa[i].length; j++){
@@ -224,38 +230,41 @@ public class KompenMahasiswa {
             System.out.println("-------------------------------");
             System.out.println("|1. Profile                   |");
             System.out.println("|2. Input Tugas               |");
-            System.out.println("|3. Keamanan                  |");
-            System.out.println("|4. Help                      |");
-            System.out.println("|5. Contact Admin             |");
-            System.out.println("|6. Logout                    |");
-            System.out.println("|7. Quit                      |");
+            System.out.println("|3. Request Pengerjaan Tugas  |");
+            System.out.println("|4. Keamanan                  |");
+            System.out.println("|5. Help                      |");
+            System.out.println("|6. Contact Admin             |");
+            System.out.println("|7. Logout                    |");
+            System.out.println("|8. Quit                      |");
             System.out.println("-------------------------------");
             System.out.print("Masukkan pilihan anda: ");
             int choice = scanner.nextInt();
-            
+            String userType = "Dosen";
 
             switch (choice) {
                 case 1:
-                    String userType = "Dosen";
                     Profile(userType);
                     break;
                 case 2:
                     InputTugas();
                     break;
                 case 3:
-                    Keamanan();
-                    break;
+                ReqTugas(in);
+                break;
                 case 4:
-                    Helpdosen();
+                    Keamanan(userType);
                     break;
                 case 5:
-                    ContactAdmin();
+                    Helpdosen();
                     break;
                 case 6:
+                    ContactAdmin();
+                    break;
+                case 7:
                     System.out.println("Terima kasih telah bertanggung jawab atas tugas kompen anda ^^");
                     LogIn();
                     break;
-                case 7:
+                case 8:
                     System.out.println("Terima kasih telah bertanggung jawab atas tugas kompen anda ^^");
                     System.exit(0);
                     break;
@@ -285,9 +294,9 @@ public class KompenMahasiswa {
             System.out.println("--------------------------------------");
             System.out.print("Masukkan pilihan anda: ");
             mhsChoice = scanner.nextByte();
+            String userType = "Mahasiswa";
             switch (mhsChoice) {
                 case 1: // Profile
-                    String userType = "Mahasiswa";
                     Profile(userType);
                 break;
                 case 2: // Alpaku
@@ -303,7 +312,7 @@ public class KompenMahasiswa {
                     Peraturan();
                     break;
                 case 6: //Keamanan
-                    Keamanan();
+                    Keamanan(userType);
                     break;
                 case 7: // Help
                     Helpmahasiswa();
@@ -460,9 +469,9 @@ public class KompenMahasiswa {
                         m12=false;
                         break;
                     }
-                    }
-                    }
-    }
+                }
+            }
+        }
     
     private static void InputAlpa() {
         System.out.println("===== Input Alpa =====");
@@ -537,6 +546,7 @@ public class KompenMahasiswa {
     }
 
     private static void ManageKeamanan() {
+        while(true){
         System.out.println("-------------------------------");
         System.out.println("|======= Manage Keamanan =====|");
         System.out.println("-------------------------------");
@@ -551,7 +561,7 @@ public class KompenMahasiswa {
 
         if(aman>3){
             System.out.println("Pilihan anda tidak valid.");
-            return;
+            continue;
         }
         if(aman==0){
             return;
@@ -629,476 +639,10 @@ public class KompenMahasiswa {
                 break;
                 }
             }
-    }
-
-    private static void Help() {
-        System.out.println("-------------------------------");
-        System.out.println("|============ Help ===========|");
-        System.out.println("-------------------------------");
-        System.out.println("Tata cara penggunaan Fitur-Fitur Kompen Mahasiswa :\r\n" + //
-                "1. Input Alpa :\r\n" + //
-                "-Pilih Nama mahasiswa yang ingin di input alpa\r\n" + //
-                "-Masukkan Semester yang ingin diinput alpa, sesuai dengan batas dari semester yang ditempuh\r\n" + //
-                "-Masukkan jumlah jam alpa yang ingin ditambahkan\r\n" + //
-                "-Alpa berhasil ditambahkan dengan total kompen yang telah ditambah\r\n" + //
-                "\r\n" + //
-                "2. Data Mahasiswa :\r\n" + //
-                "-Masuk ke menu pilihan \"data mahasiswa\"\r\n" + //
-                "-Kemudian akan muncul semua data-data mahasiswa\r\n" + //
-                "\r\n" + //
-                "3. Manage Keamanan : \r\n" + //
-                "-Masuk ke menu \"Manage Kemanan\" \r\n" + //
-                "-Setelah masuk, terdapat pilihan 3 user yang terdiri dari admin, dosen dan mahasiswa\r\n" + //
-                "-setelah memilih salah satu dari pilihan user tersebut, akan muncul kembali 3 akun dari salah satu user tersebut, pilih salah satu.\r\n" + //
-                "-Kemudian pilih ubah username atau password yang ingin dirubah\r\n" + //
-                "-jika telah berhasil, maka lakukan LogIn ulang\r\n" + //
-                "\r\n" + //
-                "4. Input Tugas :\r\n" + //
-                "-Masuk ke menu \"Input Tugas\"\r\n" + //
-                "-Setelah itu pilih salah satu dari 5 tugas, atau bisa menambahkan tugas.\r\n" + //
-                "-Saat memilih tugas akan muncul detail dari tugas tersebut, seperti nama tugas, pemberi tugas, jumlah kompen, kuota dan tanggal.\r\n" + //
-                "-Selain itu juga tugas tersebut bisa di edit dan dihapus.\r\n" + //
-                "\r\n" + //
-                "5. Kemanan :\r\n" + //
-                "-Masuk menu \"Keamanan\"\r\n" + //
-                "-pilih salah satu dari \"ubah username\" atau \"ubah password\"\r\n" + //
-                "-Ubah salah satu dari keamanan tersebut\r\n" + //
-                "-setelah dirubah maka lakukan LogIn ulang untuk masuk ke akun dengan kemanan yang anda ubah tadi\r\n" + //
-                "\r\n" + //
-                "6. Alpaku :\r\n" + //
-                "-Masuk ke menu \"Alpaku\"\r\n" + //
-                "-Kemudian pilih semester yang ingin dilihat kompennya atau bisa pilih rekap tugas kompen\r\n" + //
-                "-maka otomatis akan terlihat jumlah jam alpa semester serta total jam tugas kompen per-Semester\r\n" + //
-                "\r\n" + //
-                "7. Tugas Tersedia :\r\n" + //
-                "-Masuk ke menu \"Tugas Tersedia\"\r\n" + //
-                "-pilih tugas dari 5 tugas tersebut\r\n" + //
-                "-setelah memilih tugas, tugas bisa dikerjakan\r\n" + //
-                "\r\n" + //
-                "8. History Tugas :\r\n" + //
-                "-Masuk ke menu \"History Tugas\"\r\n" +
-                "-pada menu ini lakukan pengerjakan tugas pada menu \"Tugas Tersedia\" untuk bisa melihat tugas mana saja yang sudah dikerjakan.");
-        Pilihan();
-    }
-
-    private static void InputTugas() {
-        boolean list= true;
-        while (list) {
-                    System.out.println("-------------------------------");
-                    System.out.println("|======== Input Tugas ========|");
-                    System.out.println("-------------------------------");
-                    System.out.println("List tugas:");
-                    for (int i = 1; i < tugas.length; i++) {
-                        if (tugas[i] != null) {
-                            System.out.println(i + ". " + tugas[i]);
-                        }
-                    }
-                    System.out.println();
-                    System.out.println("99. Tambah Tugas");
-                    System.out.println("0. Kembali");
-                    System.out.print("Pilih tugas: ");
-                    int pilih1 = scanner.nextInt();
-                    if(pilih1==0){
-                      break;
-                    } else if (pilih1 == 99) {
-                        scanner.nextLine();
-                        System.out.println("\n===== Input Tugas =====");
-                        System.out.print("Masukkan nama tugas: ");
-                        String tugasBaru = scanner.nextLine();
-                        int edit= 0;
-        
-                        for (int i = 1; i < tugas.length; i++) {
-                            if (tugas[i] == null) {
-                                tugas[i] = tugasBaru;
-                                edit+= i;
-                                list = true;
-                                break;
-                            } else {
-                                continue;
-                            }
-                        }
-        
-                        pemberiTugas[edit]= dsnData[in][0];
-        
-                        System.out.print("Masukkan jumlah kompen (jam): ");
-                        jmlKompen[edit]= scanner.nextInt();
-        
-                        System.out.print("Masukkan jumlah kuota (mhs): ");
-                        kuota[edit]= scanner.nextInt();
-                        boolean tanggal= true;
-                        
-                        while(tanggal){
-                        System.out.println("\nMasukkan tanggal post: ");
-                        System.out.print("Tanggal (DD): ");
-                        tgl[edit]= scanner.nextInt();
-                        System.out.print("Bulan (MM): ");
-                        bln[edit]= scanner.nextInt();
-                        System.out.print("Tahun (YYYY): ");
-                        thn[edit]= scanner.nextInt();
-                        if(thn[edit]<2000 || bln[edit]>12 || bln[edit]<1 || tgl[edit]>31 || tgl[edit]<1){
-                            System.out.println("Tanggal tidak valid.");
-                            continue;
-                        } else{
-                            break;
-                        }
-                    }
-                        
-                        for (int i = 1; i < tugas.length; i++) {
-                          if (tugas[i] != null){
-                              continue;
-                          } else if(tugas[i]==null){
-                              tersedia=i;
-                              break;
-                          }
-                        }
-                        
-                        System.out.println("Tugas berhasil ditambahkan!");
-                    } else if(pilih1<tersedia){
-                        boolean menu1 = true;
-                        while (menu1) {
-                            System.out.println("-------------------------------");
-                            System.out.println("|======= Detail Tugas ========|");
-                            System.out.println("-------------------------------");
-                            System.out.println("Nama Tugas      : " + tugas[pilih1]);
-                            System.out.println("Pemberi Tugas   : " + pemberiTugas[pilih1]);
-                            System.out.println("Jumlah Kompen   : " + jmlKompen[pilih1] + " jam");
-                            System.out.println("Kuota           : " + kuota[pilih1] + " mhs");
-                            System.out.println("Tanggal         : " + tgl[pilih1]+"/"+bln[pilih1]+"/"+thn[pilih1]);
-                            System.out.println();
-                            System.out.println("1. Edit");
-                            System.out.println("2. Hapus");
-                            System.out.println("0. Kembali");
-                            System.out.print("Masukkan pilihan anda: ");
-                            int pilih2 = scanner.nextInt();
-        
-                            if (pilih2 == 1) {
-                                boolean edit = true;
-                                while (edit) {
-                                    System.out.println("\n===== Mau edit apa? =====");
-                                    System.out.println("1. Nama Tugas");
-                                    System.out.println("2. Pemberi Tugas");
-                                    System.out.println("3. Jumlah Kompen");
-                                    System.out.println("4. Kuota");
-                                    System.out.println("0. Kembali");
-                                    System.out.print("Masukkan Pilihan anda: ");
-                                    int pilih3 = scanner.nextInt();
-                                    if (pilih3 == 1) {
-                                        scanner.nextLine();
-                                        System.out.print("Masukkan nama tugas baru: ");
-                                        String nmBaru = scanner.nextLine();
-                                        tugas[pilih1] = nmBaru;
-                                        System.out.println("Item berhasil diedit!");
-                                        edit = false;
-                                    } else if (pilih3 == 2) {
-                                        scanner.nextLine();
-                                        System.out.print("Masukkan nama pemberi tugas baru: ");
-                                        String pmbriBaru = scanner.nextLine();
-                                        pemberiTugas[pilih1] = pmbriBaru;
-                                        System.out.println("Item berhasil diedit!");
-                                        edit = false;
-                                    } else if (pilih3 == 3) {
-                                        System.out.print("Masukkan jumlah kompen baru: ");
-                                        int jmlBaru = scanner.nextInt();
-                                        jmlKompen[pilih1] = jmlBaru;
-                                        System.out.println("Item berhasil diedit!");
-                                        edit = false;
-                                    } else if (pilih3 == 4) {
-                                        System.out.print("Masukkan jumlah kuota baru: ");
-                                        int kuotaBaru = scanner.nextInt();
-                                        kuota[pilih1] = kuotaBaru;
-                                        System.out.println("Item berhasil diedit!");
-                                        edit = false;
-                                    } else if (pilih3 == 0) {
-                                        edit = false;
-                                        menu1 = true;
-                                    }
-                                }
-                            } else if(pilih2==2){
-                                System.out.print("Apakah anda yakin ingin menghapus tugas ini? (y/n):");
-                                String hps= scanner.next();
-
-                                if(hps.equalsIgnoreCase("y")){
-                                    if (pilih1 < tugas.length) {
-                                        tugas[pilih1]=null;
-                                        pemberiTugas[pilih1]=null;
-                                        jmlKompen[pilih1]=0;
-                                        tgl[pilih1]=0;
-                                        bln[pilih1]=0;
-                                        thn[pilih1]=0;
-                                        for (int i = pilih1; i < tugas.length - 1; i++) {
-                                            tugas[i] = tugas[i + 1];
-                                            pemberiTugas[i] = pemberiTugas[i + 1];
-                                            jmlKompen[i] = jmlKompen[i + 1];
-                                            kuota[i] = kuota[i + 1];
-                                            tgl[i] = tgl[i + 1];
-                                            bln[i] = bln[i + 1];
-                                            thn[i] = thn[i + 1];
-                                        }
-                                    System.out.println("Tugas berhasil dihapus!");
-                                    break;
-                                } else if(hps.equalsIgnoreCase("n")){
-                                    break;
-                                }
-                            }
-                            } else if (pilih2 == 0) {
-                                menu1 = false;
-                            }
-                        }
-                    } else if(pilih1>tersedia-1){
-                      System.out.println("Pilihan tidak valid.");
-                      continue;
-                    }
-                }
-    }
-
-    private static void Keamanan() {
-        System.out.println("-------------------------------");
-        System.out.println("|========= Keamanan ==========|");
-        System.out.println("-------------------------------");
-        System.out.println("1. Ubah Username");
-        System.out.println("2. Ubah Password");
-        System.out.println("0. Kembali");
-        System.out.print("Masukkan pilihan anda: ");
-        int aman = scanner.nextInt();
-        String usnPw[] = {"Username", "Password"};
-    
-        if (aman == 0) {
-            return;
-        }
-        boolean verif = true;
-        scanner.nextLine();
-        while (verif) {
-            System.out.print("\nMasukkan Password anda saat ini: ");
-            String ver = scanner.nextLine();
-            if (ver.equals(mhs[1][in - 1]) || ver.equals(dsn[1][in - 1])) {
-                verif = false;
-                break;
-            } else {
-                System.out.println("Password yang anda masukkan salah.");
-                continue;
-            }
-        }
-    
-        boolean edit = true;
-        while (edit) {
-            System.out.print("Masukkan " + usnPw[aman - 1] + " baru: ");
-            String newUsn = scanner.nextLine();
-            if (newUsn.equals(mhs[aman - 1][in - 1]) || newUsn.equals(dsn[aman - 1][in - 1])) {
-                System.out.println(usnPw[aman - 1] + " baru tidak boleh sama.");
-                continue;
-            } else {
-                if (aman == 2) {
-                    mhs[aman - 1][in - 1] = newUsn;
-                } else if(aman==3) {
-                    dsn[aman - 1][in - 1] = newUsn;
-                }
-    
-                System.out.println(usnPw[aman - 1] + " berhasil diubah!");
-                edit = false;
-                break;
-            }
         }
     }
 
-    private static void ContactAdmin() {
-        System.out.println("-----------------------------------");
-        System.out.println("|========= Contact Admin =========|");
-        System.out.println("-----------------------------------");
-        System.out.println("| Salsabila Mahda  | 081918242172 |");
-        System.out.println("| Rocky Alessandro | 081918242172 |");
-        System.out.println("| Erik Ridho       | 081918242172 |");
-        System.out.println("-----------------------------------");
-        Pilihan();
-    }
-
-    private static void Alpaku() {
-        byte subChoice2;
-        boolean alpaku=true;
-        int rekap= smtSkrg[in]+1;
-        while(alpaku){
-            System.out.println("-------------------------------");
-            System.out.println("|=========== Alpaku ==========|");
-            System.out.println("-------------------------------");
-            for(int i=1; i<=smtSkrg[in]; i++){
-                System.out.println(i+". "+"Semester "+i);
-            }
-            System.out.println(rekap+". Rekap Tugas Kompen");
-            System.out.println("0. Kembali");
-            System.out.print("Masukkan pilihan anda: ");
-            subChoice2 = scanner.nextByte();
-            boolean semester= true;
-                                
-                if(0<subChoice2 && subChoice2<smtSkrg[in]+1){
-                    System.out.println("\n=== Alpaku - Semester "+subChoice2+" ===");
-                    System.out.println("Jumlah Alpa Semester "+subChoice2+": " + alpa[in][subChoice2] + " jam");
-                    System.out.println("Total jam tugas kompen Semester "+subChoice2+": " + kompen[in][subChoice2] + " jam");
-                    System.out.println(semester);
-                    Pilihan();
-                    }else if(subChoice2==rekap){
-                        System.out.println("\n=== Alpaku - Rekap Tugas Kompen ===");
-                        System.out.println("Total jam alpa anda     : " + totalAlpa[in] + " jam");
-                        System.out.println("Total jam kompen anda   : " + totalKompen[in] + " jam");
-                        Pilihan();
-                    }else if(subChoice2==0){
-                        alpaku= false;
-                        break;
-                    } else{
-                        System.out.println("Kode yang anda pilih tidak valid.");
-                        break;
-                    }
-        }
-    }
-
-    private static void TugasTersedia() {
-        for (int i = 1; i < tugas.length; i++) {
-          if (tugas[i] != null){
-              continue;
-          } else if(tugas[i]==null){
-              tersedia=i;
-              break;
-          }
-        }
-
-        boolean tgs= true;
-        while (tgs) {
-            System.out.println("-------------------------------");
-            System.out.println("|====== Tugas Tersedia =======|");
-            System.out.println("-------------------------------");;
-            for (int i = 1; i < tugas.length; i++) {
-                if (tugas[i] != null) {
-                    System.out.println(i + ". " + tugas[i]);
-                }
-            }
-            System.out.println();
-            System.out.println("0. Kembali");
-            System.out.print("Pilih tugas: ");
-            int pilih1=scanner.nextInt();
-            if(pilih1==0){
-                break;
-            }else if(pilih1>tersedia || pilih1>tugas.length){
-                System.out.println("Pilihan tidak valid.");
-            } else if(pilih1<tersedia){
-                boolean menu1 = true;
-                while (menu1) {
-                    System.out.println("-------------------------------");
-                    System.out.println("|======= Detail Tugas ========|");
-                    System.out.println("-------------------------------");
-                    System.out.println("Nama Tugas      : " + tugas[pilih1]);
-                    System.out.println("Pemberi Tugas   : " + pemberiTugas[pilih1]);
-                    System.out.println("Jumlah Kompen   : " + jmlKompen[pilih1] + " jam");
-                    System.out.println("Kuota           : " + kuota[pilih1] + " mhs");
-                    System.out.println("Tanggal         : " + tgl[pilih1]+"/"+bln[pilih1]+"/"+thn[pilih1]);
-                    System.out.println();
-                    System.out.println("1. Kerjakan");
-                    System.out.println("0. Kembali");
-                    System.out.print("Masukkan pilihan anda: ");
-                    int subChoice3 = scanner.nextInt();
-                    switch (subChoice3) {
-                        case 0:
-                            break;
-                        case 1:
-                            for(int i=1; i<doneJdl[in].length; i++){
-                                if(doneJdl[in][i]!=null){
-                                    continue;
-                                } else if(doneJdl[in][i]==null){
-                                    doneJdl[in][i]= tugas[pilih1];
-                                    donePmbr[in][i]= pemberiTugas[pilih1];
-                                        jmlDone[in][i]= jmlKompen[pilih1];
-                                        System.out.println("\nMasukkan tanggal pengerjaan: ");
-                                        System.out.print("Tanggal (DD): ");
-                                        tglDone[in][i]= scanner.nextInt();
-                                        System.out.print("Bulan (MM): ");
-                                        blnDone[in][i]= scanner.nextInt();
-                                        System.out.print("Tahun (YYYY): ");
-                                        thnDone[in][i]= scanner.nextInt();
-                                        if(totalKompen[in]<jmlKompen[pilih1]){
-                                            totalKompen[in]=0;
-                                        } else
-                                            totalKompen[in]-= jmlKompen[pilih1];
-
-                                        for(int j= kompen[in].length-1; j>=1; j--){
-                                            if(kompen[in][j]==0){
-                                                continue;
-                                            } else if(kompen[in][j]!=0){
-                                                if(kompen[in][j]<jmlKompen[pilih1]){
-                                                    jmlKompen[pilih1]-=kompen[in][j];
-                                                    kompen[in][j]=0;
-                                                    continue;
-                                                }
-                                                kompen[in][j]-= jmlKompen[pilih1];
-                                                break;
-                                            }
-                                        }
-                                            break;
-                                            }
-                                        }
-                                            for (int i = 1; i < tugas.length; i++) {
-                                                if (tugas[i] != null){
-                                                    continue;
-                                                } else if(tugas[i]==null){
-                                                    tersedia=i;
-                                                    break;
-                                                }
-                                            }
-
-                                            System.out.println("Selamat mengerjakan tugas anda! ^^");
-                                            menu1= false;
-                                            break;
-                                            default:
-                                                System.out.println("Kode yang anda pilih tidak valid.");
-                                                break;
-                                        }
-                                        if (subChoice3 == 0) {
-                                            break;
-                                        }
-                                }
-                            } 
-                    }
-    }
-
-    private static void HistoryTugas() {
-            System.out.println("-------------------------------");
-            System.out.println("|====== History Tugas ========|");
-            System.out.println("-------------------------------");
-            boolean ada= false;
-            for(int i=1; i<doneJdl.length; i++){
-                if(doneJdl[in][i]==null){
-                    continue;
-                } else if(doneJdl[in][i]!=null){
-                    ada=true;
-                } 
-                } if(!ada){
-                    System.out.println("Belum ada tugas kompen yang dikerjakan.");
-                    System.out.println("Buka menu Tugas Tersedia untuk melihat tugas kompen yang dapat dikerjakan.");
-                } else if(ada){
-                    for(int i=1; i<doneJdl[in].length; i++){
-                        if(doneJdl[in][i]==null){
-                            break;
-                        } else{
-                            System.out.println(+i+". "+doneJdl[in][i]);
-                            System.out.println("Pemberi Tugas       : "+donePmbr[in][i]);
-                            System.out.println("Jumlah Kompen       : "+jmlDone[in][i]);
-                            System.out.println("Tanggal Pengerjaan  : "+tglDone[in][i]+"/"+blnDone[in][i]+"/"+thnDone[in][i]);
-                            System.out.println();
-                        }
-                    }
-                }
-                Pilihan();
-    }
-
-    private static void Peraturan() {
-        System.out.println("----------------------------------------");
-        System.out.println("|= Peraturan Sistem Kompen Mahasiswa = |");
-        System.out.println("----------------------------------------");
-        System.out.println("1. Kompensasi tidak menghapuskan jumlah ketidakhadiran");
-        System.out.println("2. Kompensasi tidak boleh digantikan dalam bentuk uang atau barang ");
-        System.out.println("3. Besarnya kompensasi ditentukan berdasarkan jumlah jam alpa dikalikan dua");
-        System.out.println("4. Kompensasi dilaksanakan setelah jam pelajaran resmi berakhir atau apa saat liburan.");
-        System.out.println("5. Bilamana kompensasi tidak dilaksanakan pada semester yang sama");
-        System.out.println("maka jumlah kompensasi dikalikan dua pada semester berikutnya dan demikian seterusnya. ");
-        Pilihan();
-    }
- private static void Helpadmin() {
+    private static void Helpadmin() {
         System.out.println("Tata cara penggunaan Fitur-Fitur Kompen Mahasiswa :\r\n" + //
                 "\r\n" + //
                 "1. Input Alpa :\r\n" + //
@@ -1153,6 +697,435 @@ public class KompenMahasiswa {
                 "-pada menu ini lakukan pengerjakan tugas pada menu \"Tugas Tersedia\" untuk bisa melihat tugas mana saja yang sudah dikerjakan.");
                 Pilihan();
         }
+    private static void InputTugas() {
+        for (int i = 0; i < tugas.length; i++) {
+            if (tugas[i][3] != null && Integer.parseInt(tugas[i][3]) <= 0) {
+                for (int k = i; k < tugas.length - 1; k++) {
+                    tugas[k] = tugas[k + 1];
+                }
+                tugas[tugas.length - 1] = new String[7];
+                i--;
+            }
+        }    
+
+        for (int i = 1; i < tugas.length; i++) {
+          if (tugas[i][0] != null){
+              continue;
+          } else if(tugas[i][0]==null){
+              tersedia=i;
+              break;
+          }
+        }
+        System.out.println(tersedia);
+
+        boolean list= true;
+        while (list) {
+                    System.out.println("-------------------------------");
+                    System.out.println("|======== Input Tugas ========|");
+                    System.out.println("-------------------------------");
+                    System.out.println("List tugas:");
+                    for (int i = 1; i < tugas.length; i++) {
+                        if (tugas[i][0] != null) {
+                            System.out.println(i + ". " + tugas[i][0]);
+                        }
+                    }
+                    System.out.println();
+                    System.out.println("99. Tambah Tugas");
+                    System.out.println("0. Kembali");
+                    System.out.print("Pilih tugas: ");
+                    int pilih1 = scanner.nextInt();
+                    if(pilih1==0){
+                      break;
+                    } else if (pilih1 == 99) {
+                        scanner.nextLine();
+                        System.out.println("\n===== Input Tugas =====");
+                        System.out.print("Masukkan nama tugas: ");
+                        String tugasBaru = scanner.nextLine();
+                        int edit= 0;
+        
+                        // for (int i = 1; i < tugas.length; i++) {
+                        //     if (tugas[i] == null) {
+                        //         tugas[i][0] = tugasBaru;
+                        //         edit+= i;
+                        //         list = true;
+                        //         break;
+                        //     } else {
+                        //         continue;
+                        //     }
+                        // }
+                        tugas[tersedia][0]=tugasBaru;
+                        tugas[tersedia][1]= dsnData[in][0];
+                        System.out.println("yes");
+        
+                        System.out.print("Masukkan jumlah kompen (jam): ");
+                        int jamnew= scanner.nextInt();
+                        tugas[tersedia][2]= String.valueOf(jamnew);
+        
+                        System.out.print("Masukkan jumlah kuota (mhs): ");
+                        int mhsnew= scanner.nextInt();
+                        tugas[tersedia][3]= String.valueOf(mhsnew);
+                        boolean tanggal= true;
+                        
+                        while(tanggal){
+                            int tglNew, blnNew, thnNew;
+                        System.out.println("\nMasukkan tanggal post: ");
+                        System.out.print("Tanggal (DD): ");
+                        tglNew= scanner.nextInt();
+                        System.out.print("Bulan (MM): ");
+                        blnNew= scanner.nextInt();
+                        System.out.print("Tahun (YYYY): ");
+                        thnNew= scanner.nextInt();
+                        if(thnNew<2000 || blnNew>12 || blnNew<1 || tglNew>31 || tglNew<1){
+                            System.out.println("Tanggal tidak valid.");
+                            continue;
+                        } else{
+                            tugas[tersedia][4]= String.valueOf(tglNew);
+                            tugas[tersedia][5]= String.valueOf(blnNew);
+                            tugas[tersedia][6]= String.valueOf(thnNew);
+                            break;
+                        }
+                    }
+                        
+                        for (int i = 1; i < tugas.length; i++) {
+                          if (tugas[i][0] != null){
+                              continue;
+                          } else if(tugas[i][0]==null){
+                              tersedia=i;
+                              break;
+                          }
+                        }
+                        
+                        System.out.println("Tugas berhasil ditambahkan!");
+                    } else if(pilih1<tersedia){
+                        boolean menu1 = true;
+                        while (menu1) {
+                            System.out.println("-------------------------------");
+                            System.out.println("|======= Detail Tugas ========|");
+                            System.out.println("-------------------------------");
+                            System.out.println("Nama Tugas      : " + tugas[pilih1][0]);
+                            System.out.println("Pemberi Tugas   : " + tugas[pilih1][1]);
+                            System.out.println("Jumlah Kompen   : " + tugas[pilih1][2] + " jam");
+                            System.out.println("Kuota           : " + tugas[pilih1][3] + " mhs");
+                            System.out.println("Tanggal         : " + tugas[pilih1][4]+"/"+tugas[pilih1][5]+"/"+tugas[pilih1][6]);
+                            System.out.println();
+                            System.out.println("1. Edit");
+                            System.out.println("2. Hapus");
+                            System.out.println("0. Kembali");
+                            System.out.print("Masukkan pilihan anda: ");
+                            int pilih2 = scanner.nextInt();
+        
+                            if (pilih2 == 1) {
+                                boolean edit = true;
+                                while (edit) {
+                                    System.out.println("\n===== Mau edit apa? =====");
+                                    System.out.println("1. Nama Tugas");
+                                    System.out.println("2. Pemberi Tugas");
+                                    System.out.println("3. Jumlah Kompen");
+                                    System.out.println("4. Kuota");
+                                    System.out.println("0. Kembali");
+                                    System.out.print("Masukkan Pilihan anda: ");
+                                    int pilih3 = scanner.nextInt();
+                                    if (pilih3 == 1) {
+                                        scanner.nextLine();
+                                        System.out.print("Masukkan nama tugas baru: ");
+                                        String nmBaru = scanner.nextLine();
+                                        tugas[pilih1][0] = nmBaru;
+                                        System.out.println("Item berhasil diedit!");
+                                        edit = false;
+                                    } else if (pilih3 == 2) {
+                                        scanner.nextLine();
+                                        System.out.print("Masukkan nama pemberi tugas baru: ");
+                                        String pmbriBaru = scanner.nextLine();
+                                        tugas[pilih1][1] = pmbriBaru;
+                                        System.out.println("Item berhasil diedit!");
+                                        edit = false;
+                                    } else if (pilih3 == 3) {
+                                        System.out.print("Masukkan jumlah kompen baru: ");
+                                        int jmlBaru = scanner.nextInt();
+                                        tugas[pilih1][2] = String.valueOf(jmlBaru);
+                                        System.out.println("Item berhasil diedit!");
+                                        edit = false;
+                                    } else if (pilih3 == 4) {
+                                        System.out.print("Masukkan jumlah kuota baru: ");
+                                        int kuotaBaru = scanner.nextInt();
+                                        tugas[pilih1][3] = String.valueOf(kuotaBaru);
+                                        System.out.println("Item berhasil diedit!");
+                                        edit = false;
+                                    } else if (pilih3 == 0) {
+                                        edit = false;
+                                        menu1 = true;
+                                    }
+                                }
+                            } else if(pilih2==2){
+                                System.out.print("Apakah anda yakin ingin menghapus tugas ini? (y/n):");
+                                String hps= scanner.next();
+
+                                if(hps.equalsIgnoreCase("y")){
+                                    if (pilih1 < tugas.length) {
+                                        tugas[pilih1][0]=null;
+                                        tugas[pilih1][1]=null;
+                                        tugas[pilih1][2]=null;
+                                        tugas[pilih1][3]=null;
+                                        tugas[pilih1][4]=null;
+                                        tugas[pilih1][5]=null;
+                                        tugas[pilih1][6]=null;
+                                        for (int i = pilih1; i < tugas.length - 1; i++) {
+                                            tugas[i] = tugas[i + 1];
+                                            // pemberiTugas[i] = pemberiTugas[i + 1];
+                                            // jmlKompen[i] = jmlKompen[i + 1];
+                                            // kuota[i] = kuota[i + 1];
+                                            // tgl[i] = tgl[i + 1];
+                                            // bln[i] = bln[i + 1];
+                                            // thn[i] = thn[i + 1];
+                                        }
+                                    System.out.println("Tugas berhasil dihapus!");
+                                    break;
+                                } else if(hps.equalsIgnoreCase("n")){
+                                    break;
+                                }
+                            }
+                            } else if (pilih2 == 0) {
+                                menu1 = false;
+                            }
+                        }
+                    } else if(pilih1>tersedia-1){
+                      System.out.println("Pilihan tidak valid.");
+                      continue;
+                    }
+                }
+    }
+
+    private static void Keamanan(String toChange) {
+        System.out.println("-------------------------------");
+        System.out.println("|========= Keamanan ==========|");
+        System.out.println("-------------------------------");
+        System.out.println("1. Ubah Username");
+        System.out.println("2. Ubah Password");
+        System.out.println("0. Kembali");
+        System.out.print("Masukkan pilihan anda: ");
+        int aman = scanner.nextInt();
+        String usnPw[] = {"Username", "Password"};
+    
+        if (aman == 0) {
+            return;
+        }
+        boolean verif = true;
+        scanner.nextLine();
+        while (verif) {
+            System.out.print("\nMasukkan Password anda saat ini: ");
+            String ver = scanner.nextLine();
+            if (ver.equals(mhs[1][in - 1]) || ver.equals(dsn[1][in - 1])) {
+                verif = false;
+                break;
+            } else {
+                System.out.println("Password yang anda masukkan salah.");
+                continue;
+            }
+        }
+    
+        boolean edit = true;
+        while (edit) {
+            System.out.print("Masukkan " + usnPw[aman - 1] + " baru: ");
+            String newUsn = scanner.nextLine();
+            if (newUsn.equals(mhs[aman - 1][in - 1]) || newUsn.equals(dsn[aman - 1][in - 1])) {
+                System.out.println(usnPw[aman - 1] + " baru tidak boleh sama.");
+                continue;
+            } else {
+                if (toChange.equals("Mahasiswa")) {
+                    mhs[aman - 1][in - 1] = newUsn;
+                } else if(toChange.equals("Dosen")) {
+                    dsn[aman - 1][in - 1] = newUsn;
+                }
+    
+                System.out.println(usnPw[aman - 1] + " berhasil diubah!");
+                edit = false;
+                break;
+            }
+        }
+    }
+
+    private static void ContactAdmin() {
+        System.out.println("-----------------------------------");
+        System.out.println("|========= Contact Admin =========|");
+        System.out.println("-----------------------------------");
+        System.out.println("| Salsabila Mahda  | 081918242172 |");
+        System.out.println("| Rocky Alessandro | 081918242172 |");
+        System.out.println("| Erik Ridho       | 081918242172 |");
+        System.out.println("-----------------------------------");
+        Pilihan();
+    }
+
+    private static void Alpaku() {
+        byte subChoice2;
+        boolean alpaku=true;
+        int rekap= smtSkrg[in]+1;
+        while(alpaku){
+            System.out.println("-------------------------------");
+            System.out.println("|=========== Alpaku ==========|");
+            System.out.println("-------------------------------");
+            for(int i=1; i<=smtSkrg[in]; i++){
+                System.out.println(i+". "+"Semester "+i);
+            }
+            System.out.println(rekap+". Rekap Tugas Kompen");
+            System.out.println("0. Kembali");
+            System.out.print("Masukkan pilihan anda: ");
+            subChoice2 = scanner.nextByte();
+            boolean semester= true;
+                                
+                if(0<subChoice2 && subChoice2<smtSkrg[in]+1){
+                    System.out.println("\n=== Alpaku - Semester "+subChoice2+" ===");
+                    System.out.println("Jumlah Alpa Semester "+subChoice2+": " + alpa[in][subChoice2] + " jam");
+                    System.out.println("Total jam tugas kompen Semester "+subChoice2+": " + kompen[in][subChoice2] + " jam");
+                    Pilihan();
+                    }else if(subChoice2==rekap){
+                        System.out.println("\n=== Alpaku - Rekap Tugas Kompen ===");
+                        System.out.println("Total jam alpa anda     : " + totalAlpa[in] + " jam");
+                        System.out.println("Total jam kompen anda   : " + totalKompen[in] + " jam");
+                        Pilihan();
+                    }else if(subChoice2==0){
+                        alpaku= false;
+                        break;
+                    } else{
+                        System.out.println("Kode yang anda pilih tidak valid.");
+                        break;
+                    }
+        }
+    }
+
+    private static void TugasTersedia() {
+        for (int i = 0; i < tugas.length; i++) {
+            if (tugas[i][3] != null && Integer.parseInt(tugas[i][3]) <= 0) {
+                for (int k = i; k < tugas.length - 1; k++) {
+                    tugas[k] = tugas[k + 1];
+                }
+                tugas[tugas.length - 1] = new String[7];
+                i--;
+            }
+        }    
+        for (int i = 1; i < tugas.length; i++) {
+            if (tugas[i][0] == null) {
+                tersedia = i;
+                break;
+            }
+        }
+    
+        boolean tgs = true;
+        while (tgs) {
+            System.out.println("-------------------------------");
+            System.out.println("|====== Tugas Tersedia =======|");
+            System.out.println("-------------------------------");
+            int j = 1;
+            for (int i = 1; i < tugas.length; i++) {
+                if (tugas[i][0] != null && Integer.valueOf(tugas[i][3]) > 0) {
+                    System.out.println(j + ". " + tugas[i][0]);
+                    j++;
+                }
+            }
+    
+            System.out.println();
+            System.out.println("0. Kembali");
+            System.out.print("Pilih tugas: ");
+            int pilih1 = scanner.nextInt();
+            
+            if (pilih1 == 0) {
+                break;
+            } else if (pilih1 > tersedia || pilih1 >= tugas.length || tugas[pilih1][0] == null) {
+                System.out.println("Pilihan tidak valid.");
+            } else {
+                boolean menu1 = true;
+                while (menu1) {
+                    System.out.println("-------------------------------");
+                    System.out.println("|======= Detail Tugas ========|");
+                    System.out.println("-------------------------------");
+                    System.out.println("Nama Tugas      : " + tugas[pilih1][0]);
+                    System.out.println("Pemberi Tugas   : " + tugas[pilih1][1]);
+                    System.out.println("Jumlah Kompen   : " + tugas[pilih1][2] + " jam");
+                    System.out.println("Kuota           : " + tugas[pilih1][3] + " mhs");
+                    System.out.println("Tanggal         : " + tugas[pilih1][4] + "/" + tugas[pilih1][5] + "/" + tugas[pilih1][6]);
+                    System.out.println();
+                    System.out.println("1. Kerjakan");
+                    System.out.println("0. Kembali");
+                    System.out.print("Masukkan pilihan anda: ");
+                    int subChoice3 = scanner.nextInt();
+                    switch (subChoice3) {
+                        case 0:
+                            menu1 = false;
+                            break;
+                        case 1:
+                            int tglAsk, blnAsk, thnAsk;
+                            System.out.println("\nMasukkan tanggal pengerjaan: ");
+                            System.out.print("Tanggal (DD): ");
+                            tglAsk = scanner.nextInt();
+                            System.out.print("Bulan (MM): ");
+                            blnAsk = scanner.nextInt();
+                            System.out.print("Tahun (YYYY): ");
+                            thnAsk = scanner.nextInt();
+                            AddReq(tugas[pilih1], tglAsk, blnAsk, thnAsk, in);
+                            tugas[pilih1][3] = String.valueOf(Integer.parseInt(tugas[pilih1][3]) - 1);
+                            if(Integer.valueOf(tugas[pilih1][3])<=0){
+                                for(int o=0; o<tugas[pilih1].length;o++){
+                                    tugas[pilih1][0]=null;
+                                }
+                                for(int x=pilih1; x<tugas.length-1;x++){
+                                    tugas[x]=tugas[x+1];
+                                }
+                            }
+                            System.out.println("Selamat mengerjakan tugas anda! ^^");
+                            System.out.println("Jam kompen anda akan dikurangi setelah tugas selesai.");
+                            menu1 = false;
+                            break;
+                        default:
+                            System.out.println("Kode yang anda pilih tidak valid.");
+                            break;
+                    }
+                }
+            }
+        }
+    }
+    
+    private static void HistoryTugas() {
+            System.out.println("-------------------------------");
+            System.out.println("|====== History Tugas ========|");
+            System.out.println("-------------------------------");
+            boolean ada= false;
+            for(int i=1; i<tugasDone[in].length; i++){
+                if(tugasDone[in][i][0]==null){
+                    continue;
+                } else if(tugasDone[in][i][0]!=null){
+                    ada=true;
+                } 
+                } if(!ada){
+                    System.out.println("Belum ada tugas kompen yang dikerjakan.");
+                    System.out.println("Buka menu Tugas Tersedia untuk melihat tugas kompen yang dapat dikerjakan.");
+                } else if(ada){
+                    for(int i=1; i<tugasDone[in].length; i++){
+                        if(tugasDone[in][i][0]!=null){
+                            System.out.println(+i+". "+tugasDone[in][i][0]);
+                            System.out.println("Pemberi Tugas       : "+tugasDone[in][i][1]);
+                            System.out.println("Jumlah Kompen       : "+tugasDone[in][i][2]);
+                            System.out.println("Tanggal Pengerjaan  : "+tugasDone[in][i][3]+"/"+tugasDone[in][i][4]+"/"+tugasDone[in][i][5]);
+                            System.out.println();
+                        } else{
+                            break;
+                        }
+                    }
+                }
+                Pilihan();
+    }
+
+    private static void Peraturan() {
+        System.out.println("----------------------------------------");
+        System.out.println("|= Peraturan Sistem Kompen Mahasiswa = |");
+        System.out.println("----------------------------------------");
+        System.out.println("1. Kompensasi tidak menghapuskan jumlah ketidakhadiran");
+        System.out.println("2. Kompensasi tidak boleh digantikan dalam bentuk uang atau barang ");
+        System.out.println("3. Besarnya kompensasi ditentukan berdasarkan jumlah jam alpa dikalikan dua");
+        System.out.println("4. Kompensasi dilaksanakan setelah jam pelajaran resmi berakhir atau apa saat liburan.");
+        System.out.println("5. Bilamana kompensasi tidak dilaksanakan pada semester yang sama");
+        System.out.println("maka jumlah kompensasi dikalikan dua pada semester berikutnya dan demikian seterusnya. ");
+        Pilihan();
+    }
+
     private static void Pilihan() {
         System.out.println("\n0. Kembali");
         System.out.println("1. Keluar");
@@ -1167,6 +1140,223 @@ public class KompenMahasiswa {
                     break;
                 default:
                     System.out.println("Kode yang anda pilih tidak valid.");
+            }
+    }
+
+    private static void ReqTugas(int dsnIn){
+        while(true){
+        System.out.println("\n=== Request Pengerjaan Tugas ===");
+        int j=1, batasReq=0;
+        boolean noReq= false;
+        for(int i=0; i<listReq[dsnIn].length; i++){
+            if(listReq[dsnIn][i][0]!= null){
+                noReq=false;
+                batasReq=i;
+                break;
+            } else{
+                noReq= true;
+            }
+        }
+        if (!noReq) { //ganti print tugas direquest dahulu baru print daftar mhs penggarap tugas tsb
+            for (int i = 0; i < listReq[dsnIn].length; i++) {
+                if (listReq[dsnIn][i][0] == null || listReq[dsnIn][i][0].equals(listReq[dsnIn][i-1][0])) {
+                    continue;
+                } else {
+                    System.out.println(j + ". " + listReq[dsnIn][i][0]);
+                    j++;
+                }
+            }
+        } else if(noReq){
+            System.out.println("Maaf, belum ada mahasiswa yang mengajukan pengerjaan tugas anda.");
+        }
+        System.out.println("\n0. Kembali");
+        System.out.print("Masukkan pilihan anda: ");
+        int pilReq= scanner.nextInt();
+
+        if(pilReq==0){
+            return;
+        } else if(pilReq<=batasReq){
+            boolean inList=true;
+            int batasList=0;
+            while(inList){
+            System.out.println("\n=== List Pengajuan Tugas "+listReq[dsnIn][pilReq][0]+" ===");
+            for(int i=0; i<listReq[dsnIn][i].length-1; i++){
+                if(listReq[dsnIn][i][0]!= null && listReq[dsnIn][i][0].equals(listReq[dsnIn][i][0])){
+                    System.out.println(i+". "+listReq[dsnIn][i][4]);
+                    batasList+=i;
+                }
+            }
+            System.out.println("\n0. Kembali");
+            System.out.print("Masukkan pilihan anda: ");
+            int editReq= scanner.nextInt();
+
+            if(editReq==0){
+                return;
+            }else if(editReq>batasList){
+                System.out.println("Masukan anda tidak valid.");
+                continue;
+            } else if(editReq<=batasList){
+                String[] data = {"Nama", "Kelas", "Jurusan", "Prodi", "Judul Tugas", "Jumlah Kompen", "Tanggal Pengajuan"};
+                System.out.println("=== " + listReq[dsnIn][editReq][4] + " ===");
+                
+                for (int i = 0; i < data.length; i++) {
+                    String label = String.format("%-20s", data[i]);
+                    if (i < 6) {
+                        System.out.println(label + ": " + listReq[dsnIn][editReq][i]);
+                    } else if (i == 6) {
+                        System.out.print(label + ": ");
+                        
+                        for (int x = 6; x < listReq[dsnIn][editReq].length; x++) {
+                            if (x < listReq[dsnIn][editReq].length) {
+                                System.out.print(listReq[dsnIn][editReq][x]);
+                                if (x < 8) {
+                                    System.out.print("/");
+                                }
+                            } else {
+                                break;
+                            }
+                        }
+                        System.out.println();
+                    } else if(i>data.length){
+                        break;
+                    }
+                }
+                                
+             System.out.println("\n1. Tandai selesai");
+             System.out.println("0. Kembali");
+             System.out.print("Masukkan pilihan anda: ");
+             int ReqAct= scanner.nextInt();
+
+             if(ReqAct==0){
+                return;
+             } else if(ReqAct==1){
+                int mhsBaik=0;
+                 for(int i=1; i<mhsData.length; i++){
+                     if (listReq[dsnIn][editReq][0].equals(mhsData[i][0])){
+                        mhsBaik=i;
+                        break;
+                     }
+                 }
+                 for(int i=1; i<tugasDone[mhsBaik].length-1; i++){
+                    if(tugasDone[mhsBaik][i][0]!=null){
+                        continue;
+                    }else if(tugasDone[mhsBaik][i][0]==null){
+                        int tgl[]= new int[3];
+                        tugasDone[mhsBaik][i][0]= listReq[dsnIn][editReq][4];
+                        tugasDone[mhsBaik][i][1]= dsnData[dsnIn][0];
+                        tugasDone[mhsBaik][i][2]= listReq[dsnIn][editReq][5];
+                        System.out.println("Masukkan tanggal tugas selesai: ");
+                        System.out.print("Tanggal (DD): ");
+                        tgl[0]= scanner.nextInt();
+                        System.out.print("Bulan (MM): ");
+                        tgl[1]= scanner.nextInt();
+                        System.out.print("Tahun (YYYY): ");
+                        tgl[2]= scanner.nextInt();
+                        tugasDone[mhsBaik][i][3]= String.valueOf(tgl[0]);
+                        tugasDone[mhsBaik][i][4]= String.valueOf(tgl[1]);
+                        tugasDone[mhsBaik][i][5]= String.valueOf(tgl[2]);
+                        System.out.println("Tugas berhasil ditandai selesai!");
+                    if(totalKompen[mhsBaik]<=Integer.valueOf(listReq[dsnIn][mhsBaik][5])){
+                            totalKompen[mhsBaik]=0;
+                        } else{
+                            totalKompen[mhsBaik]-= Integer.valueOf(listReq[dsnIn][mhsBaik][5]);
+                        }
+                    for(int k=kompen[mhsBaik].length-1; k>=1; k--){
+                        if(kompen[mhsBaik][k]==0){
+                            continue;
+                        }else if(kompen[mhsBaik][k]!=0){
+                         if(kompen[mhsBaik][k]< Integer.valueOf(listReq[dsnIn][mhsBaik][5])){
+                             listReq[dsnIn][mhsBaik][5] = String.valueOf(Integer.parseInt(listReq[dsnIn][mhsBaik][5]) - kompen[mhsBaik][k]);
+                             kompen[mhsBaik][k]=0;
+                             continue;
+                            }
+                            kompen[mhsBaik][k]-= Integer.valueOf(listReq[dsnIn][mhsBaik][5]);                          
+                        }
+                    }
+                    for (int p = 0; p < listReq[dsnIn][editReq].length; p++) {
+                        if (listReq[dsnIn][editReq][0]==null || !listReq[dsnIn][editReq][0].equals(mhsData[mhsBaik][0])) {
+                            break;
+                        } else if (listReq[dsnIn][editReq][0].equals(mhsData[mhsBaik][0])) {
+                            System.out.println("yes");
+                            for (int d = 0; d < listReq[dsnIn][editReq].length - 1; d++) {
+                                listReq[dsnIn][editReq][d] = null;
+                                listReq[dsnIn][editReq][d] = listReq[dsnIn][editReq+1][d];
+                            }
+                            // listReq[dsnIn][editReq][listReq[dsnIn][editReq].length - 1] = null;
+                        } 
+                    }
+                    return;
+                }
+            }
+             }
+            }
+        }
+        } else if(pilReq>batasReq){
+            System.out.println("Masukan anda tidak valid.");
+            continue;
+        }
+        break;
+    }
+    return;
+    }
+
+    private static void AddReq(String[] infoTugas, int tglReq, int blnReq, int thnReq, int mhsIn){
+        int kosong=0;
+        if(infoTugas[1].equals(dsnData[1][0])){
+            for(int i=1; i<listReq[1].length;i++){
+                if(listReq[1][i][0]!=null){
+                    continue;
+                } else if(listReq[1][i][0]==null){
+                    kosong= i;
+                    break;
+                }
+            }
+            listReq[1][kosong][0]= mhsData[mhsIn][0];
+            listReq[1][kosong][1]= mhsData[mhsIn][1];
+            listReq[1][kosong][2]= mhsData[mhsIn][3];
+            listReq[1][kosong][3]= mhsData[mhsIn][4];
+            listReq[1][kosong][4]= infoTugas[0];
+            listReq[1][kosong][5]= infoTugas[2];
+            listReq[1][kosong][6]= String.valueOf(tglReq);
+            listReq[1][kosong][7]= String.valueOf(blnReq);
+            listReq[1][kosong][8]= String.valueOf(thnReq);
+        } else if(infoTugas[1].equals(dsnData[2][0])){
+            for(int i=1; i<listReq[2].length;i++){
+                if(listReq[2][i][0]!=null){
+                    continue;
+                } else if(listReq[2][i][0]==null){
+                    kosong= i;
+                    break;
+                }
+            }
+            listReq[2][kosong][0]= mhsData[mhsIn][0];
+            listReq[2][kosong][1]= mhsData[mhsIn][1];
+            listReq[2][kosong][2]= mhsData[mhsIn][3];
+            listReq[2][kosong][3]= mhsData[mhsIn][4];
+            listReq[2][kosong][4]= infoTugas[0];
+            listReq[2][kosong][5]= infoTugas[2];
+            listReq[2][kosong][6]= String.valueOf(tglReq);
+            listReq[2][kosong][7]= String.valueOf(blnReq);
+            listReq[2][kosong][8]= String.valueOf(thnReq);
+        } else if(infoTugas[1].equals(dsnData[3][0])){
+            for(int i=1; i<listReq[3].length;i++){
+                if(listReq[3][i][0]!=null){
+                    continue;
+                } else if(listReq[3][i][0]==null){
+                    kosong= i;
+                    break;
+                }
+            }
+            listReq[3][kosong][0]= mhsData[mhsIn][0];
+            listReq[3][kosong][1]= mhsData[mhsIn][1];
+            listReq[3][kosong][2]= mhsData[mhsIn][3];
+            listReq[3][kosong][3]= mhsData[mhsIn][4];
+            listReq[3][kosong][4]= infoTugas[0];
+            listReq[3][kosong][5]= infoTugas[2];
+            listReq[3][kosong][6]= String.valueOf(tglReq);
+            listReq[3][kosong][7]= String.valueOf(blnReq);
+            listReq[3][kosong][8]= String.valueOf(thnReq);
+
         }
     }
 }
