@@ -18,7 +18,7 @@ public class KompenMahasiswa {
 
     public static String[][] mhsData= {{"Mahasiswa"},{
         //mhs1
-    "Nova Eliza Maharani",
+    "Gheriya Rahima J.",
     "TI - 1F",
     String.valueOf(smtSkrg[1]),
     "Teknologi Informasi",
