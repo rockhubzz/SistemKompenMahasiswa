@@ -1086,7 +1086,7 @@ public class KompenMahasiswa {
                         if(tugasDone[in][i][0]!=null){
                             System.out.println(+i+". "+tugasDone[in][i][0]);
                             System.out.println("Pemberi Tugas       : "+tugasDone[in][i][1]);
-                            System.out.println("Jumlah Kompen       : "+tugasDone[in][i][2]);
+                            System.out.println("Jumlah Kompen       : "+tugasDone[in][i][2]+" jam");
                             System.out.println("Tanggal Pengerjaan  : "+tugasDone[in][i][3]+"/"+tugasDone[in][i][4]+"/"+tugasDone[in][i][5]);
                             System.out.println();
                         } else{
@@ -1186,7 +1186,11 @@ public class KompenMahasiswa {
                 for (int i = 0; i < data.length; i++) {
                     String label = String.format("%-20s", data[i]);
                     if (i < 6) {
-                        System.out.println(label + ": " + listReq[dsnIn][editReq][i]);
+                        System.out.print(label + ": " + listReq[dsnIn][editReq][i]);
+                        if(i==5){
+                            System.out.print(" jam");
+                        }
+                        System.out.println();
                     } else if (i == 6) {
                         System.out.print(label + ": ");
                         
@@ -1263,17 +1267,15 @@ public class KompenMahasiswa {
                             }
                             for(int c=listReq[dsnIn].length-1; c>editReq; c--){
                                 for(int z= 0;z<listReq[dsnIn][c].length; z++){
-                                    // System.out.println(c+","+z);
                                         listReq[dsnIn][c][z]=null;
                                 }
                             }
-                        
                     }
                     return;
                 }
             }
-             }
-            }
+        }
+    }
         
         } else if(pilReq>batasReq){
             System.out.println("Masukan anda tidak valid.");
@@ -1285,62 +1287,30 @@ public class KompenMahasiswa {
     }
 
     private static void AddReq(String[] infoTugas, int tglReq, int blnReq, int thnReq, int mhsIn){
-        int kosong=0;
+        int kosong=0, dosenTgs=0;
         if(infoTugas[1].equals(dsnData[1][0])){
-            for(int i=1; i<listReq[1].length;i++){
-                if(listReq[1][i][0]!=null){
-                    continue;
-                } else if(listReq[1][i][0]==null){
-                    kosong= i;
-                    break;
-                }
-            }
-            listReq[1][kosong][0]= mhsData[mhsIn][0];
-            listReq[1][kosong][1]= mhsData[mhsIn][1];
-            listReq[1][kosong][2]= mhsData[mhsIn][3];
-            listReq[1][kosong][3]= mhsData[mhsIn][4];
-            listReq[1][kosong][4]= infoTugas[0];
-            listReq[1][kosong][5]= infoTugas[2];
-            listReq[1][kosong][6]= String.valueOf(tglReq);
-            listReq[1][kosong][7]= String.valueOf(blnReq);
-            listReq[1][kosong][8]= String.valueOf(thnReq);
-        } else if(infoTugas[1].equals(dsnData[2][0])){
-            for(int i=1; i<listReq[2].length;i++){
-                if(listReq[2][i][0]!=null){
-                    continue;
-                } else if(listReq[2][i][0]==null){
-                    kosong= i;
-                    break;
-                }
-            }
-            listReq[2][kosong][0]= mhsData[mhsIn][0];
-            listReq[2][kosong][1]= mhsData[mhsIn][1];
-            listReq[2][kosong][2]= mhsData[mhsIn][3];
-            listReq[2][kosong][3]= mhsData[mhsIn][4];
-            listReq[2][kosong][4]= infoTugas[0];
-            listReq[2][kosong][5]= infoTugas[2];
-            listReq[2][kosong][6]= String.valueOf(tglReq);
-            listReq[2][kosong][7]= String.valueOf(blnReq);
-            listReq[2][kosong][8]= String.valueOf(thnReq);
-        } else if(infoTugas[1].equals(dsnData[3][0])){
-            for(int i=1; i<listReq[3].length;i++){
-                if(listReq[3][i][0]!=null){
-                    continue;
-                } else if(listReq[3][i][0]==null){
-                    kosong= i;
-                    break;
-                }
-            }
-            listReq[3][kosong][0]= mhsData[mhsIn][0];
-            listReq[3][kosong][1]= mhsData[mhsIn][1];
-            listReq[3][kosong][2]= mhsData[mhsIn][3];
-            listReq[3][kosong][3]= mhsData[mhsIn][4];
-            listReq[3][kosong][4]= infoTugas[0];
-            listReq[3][kosong][5]= infoTugas[2];
-            listReq[3][kosong][6]= String.valueOf(tglReq);
-            listReq[3][kosong][7]= String.valueOf(blnReq);
-            listReq[3][kosong][8]= String.valueOf(thnReq);
-
+            dosenTgs=1;
+        }else if(infoTugas[1].equals(dsnData[2][0])){
+            dosenTgs=2;
+        }else if(infoTugas[1].equals(dsnData[3][0])){
+            dosenTgs=3;
         }
+            for(int i=1; i<listReq[dosenTgs].length;i++){
+                if(listReq[dosenTgs][i][0]!=null){
+                    continue;
+                } else if(listReq[dosenTgs][i][0]==null){
+                    kosong= i;
+                    break;
+                }
+            }
+            listReq[dosenTgs][kosong][0]= mhsData[mhsIn][0];
+            listReq[dosenTgs][kosong][1]= mhsData[mhsIn][1];
+            listReq[dosenTgs][kosong][2]= mhsData[mhsIn][3];
+            listReq[dosenTgs][kosong][3]= mhsData[mhsIn][4];
+            listReq[dosenTgs][kosong][4]= infoTugas[0];
+            listReq[dosenTgs][kosong][5]= infoTugas[2];
+            listReq[dosenTgs][kosong][6]= String.valueOf(tglReq);
+            listReq[dosenTgs][kosong][7]= String.valueOf(blnReq);
+            listReq[dosenTgs][kosong][8]= String.valueOf(thnReq);
     }
 }
