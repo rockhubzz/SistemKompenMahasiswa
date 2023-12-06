@@ -741,31 +741,15 @@ public class KompenMahasiswa {
                         System.out.println("\n===== Input Tugas =====");
                         System.out.print("Masukkan nama tugas: ");
                         String tugasBaru = scanner.nextLine();
-                        int edit= 0;
-        
-                        // for (int i = 1; i < tugas.length; i++) {
-                        //     if (tugas[i] == null) {
-                        //         tugas[i][0] = tugasBaru;
-                        //         edit+= i;
-                        //         list = true;
-                        //         break;
-                        //     } else {
-                        //         continue;
-                        //     }
-                        // }
                         tugas[tersedia][0]=tugasBaru;
                         tugas[tersedia][1]= dsnData[in][0];
-                        System.out.println("yes");
-        
                         System.out.print("Masukkan jumlah kompen (jam): ");
                         int jamnew= scanner.nextInt();
                         tugas[tersedia][2]= String.valueOf(jamnew);
-        
                         System.out.print("Masukkan jumlah kuota (mhs): ");
                         int mhsnew= scanner.nextInt();
                         tugas[tersedia][3]= String.valueOf(mhsnew);
                         boolean tanggal= true;
-                        
                         while(tanggal){
                             int tglNew, blnNew, thnNew;
                         System.out.println("\nMasukkan tanggal post: ");
@@ -998,7 +982,7 @@ public class KompenMahasiswa {
                 for (int k = i; k < tugas.length - 1; k++) {
                     tugas[k] = tugas[k + 1];
                 }
-                tugas[tugas.length - 1] = new String[7];
+                tugas[tugas.length - 1] = new String[10];
                 i--;
             }
         }    
@@ -1245,7 +1229,7 @@ public class KompenMahasiswa {
                         tugasDone[mhsBaik][i][0]= listReq[dsnIn][editReq][4];
                         tugasDone[mhsBaik][i][1]= dsnData[dsnIn][0];
                         tugasDone[mhsBaik][i][2]= listReq[dsnIn][editReq][5];
-                        System.out.println("Masukkan tanggal tugas selesai: ");
+                        System.out.println("\nMasukkan tanggal tugas selesai: ");
                         System.out.print("Tanggal (DD): ");
                         tgl[0]= scanner.nextInt();
                         System.out.print("Bulan (MM): ");
@@ -1273,24 +1257,24 @@ public class KompenMahasiswa {
                             kompen[mhsBaik][k]-= Integer.valueOf(listReq[dsnIn][mhsBaik][5]);                          
                         }
                     }
-                    for (int p = 0; p < listReq[dsnIn][editReq].length; p++) {
-                        if (listReq[dsnIn][editReq][0]==null || !listReq[dsnIn][editReq][0].equals(mhsData[mhsBaik][0])) {
-                            break;
-                        } else if (listReq[dsnIn][editReq][0].equals(mhsData[mhsBaik][0])) {
-                            System.out.println("yes");
                             for (int d = 0; d < listReq[dsnIn][editReq].length - 1; d++) {
-                                listReq[dsnIn][editReq][d] = null;
                                 listReq[dsnIn][editReq][d] = listReq[dsnIn][editReq+1][d];
+                                listReq[dsnIn][editReq+1][d] = null;
                             }
-                            // listReq[dsnIn][editReq][listReq[dsnIn][editReq].length - 1] = null;
-                        } 
+                            for(int c=listReq[dsnIn].length-1; c>editReq; c--){
+                                for(int z= 0;z<listReq[dsnIn][c].length; z++){
+                                    // System.out.println(c+","+z);
+                                        listReq[dsnIn][c][z]=null;
+                                }
+                            }
+                        
                     }
                     return;
                 }
             }
              }
             }
-        }
+        
         } else if(pilReq>batasReq){
             System.out.println("Masukan anda tidak valid.");
             continue;
