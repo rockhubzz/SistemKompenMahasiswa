@@ -3,10 +3,8 @@ public class KompenMahasiswa {
 
     //Initializations
     public static int totalAlpa[]= new int[5], totalKompen[]= new int[5];
-    public static int[][] tglDone= new int[100][100], blnDone= new int[100][100], thnDone= new int[100][100], jmlDone= new int[100][100], alpa= new int[5][15], kompen= new int[5][15];
+    public static int[][] alpa= new int[5][15], kompen= new int[5][15];
     public static String tugas[][] = new String[100][100]; 
-    public static int[] jmlKompen= new int[100], kuota= new int[100], tgl= new int[100], bln= new int[100], thn= new int[100];
-    public static String[][] doneJdl= new String[100][100], donePmbr= new String[100][100];
     public static String[][][] listReq= new String[10][100][9], tugasDone= new String [10][100][6];
     public static int tersedia= 0, in=0;
     public static int smtSkrg[]= {0,5,3,2};
