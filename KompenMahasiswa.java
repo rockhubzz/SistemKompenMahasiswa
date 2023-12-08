@@ -1248,18 +1248,20 @@ public class KompenMahasiswa {
                         } else {
                             totalKompen[mhsBaik] -= tugasKompen;
                         }
-                        for (int k = 1; k < kompen[mhsBaik].length; k++) {
-                            if(kompen[mhsBaik][k]==0){
-                                continue;
-                            } 
-                            if (kompen[mhsBaik][k] == Integer.parseInt(listReq[dsnIn][editReq][5])) {
-                                kompen[mhsBaik][k] =0;
-                                tugasKompen=0;
-                                break;
-                            } else if(kompen[mhsBaik][k] <= Integer.parseInt(listReq[dsnIn][editReq][5])){
+                        int minus = Integer.parseInt(listReq[dsnIn][editReq][5]);
+                        for (int k = kompen[mhsBaik].length-1; k>=1; k--) {
+                            System.out.println(minus);
+                            if (kompen[mhsBaik][k] > 0 ){
                                 int temp= kompen[mhsBaik][k];
-                                kompen[mhsBaik][k] -= tugasKompen;
-                                tugasKompen-= temp;
+                                kompen[mhsBaik][k]= kompen[mhsBaik][k]-minus;
+                                minus= minus-temp;
+                            } else if (kompen[mhsBaik][k] == Integer.parseInt(listReq[dsnIn][editReq][5])) {
+                                kompen[mhsBaik][k] =0;
+                                minus=0;
+                                break;
+                            }
+                            if(minus<=0){
+                                break;
                             }
                         }                            
                         for (int d = 0; d < listReq[dsnIn][editReq].length - 1; d++) {
