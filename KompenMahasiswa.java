@@ -1216,13 +1216,13 @@ public class KompenMahasiswa {
              if(ReqAct==0){
                 return;
              } else if(ReqAct==1){
-                int mhsBaik=0;
+                 int mhsBaik=0;
                  for(int i=1; i<mhsData.length; i++){
                      if (listReq[dsnIn][editReq][0].equals(mhsData[i][0])){
-                        mhsBaik=i;
-                        break;
-                     }
-                 }
+                         mhsBaik=i;
+                         break;
+                        }
+                    }
                  for(int i=1; i<tugasDone[mhsBaik].length-1; i++){
                     if(tugasDone[mhsBaik][i][0]!=null){
                         continue;
@@ -1242,24 +1242,27 @@ public class KompenMahasiswa {
                         tugasDone[mhsBaik][i][4]= String.valueOf(tgl[1]);
                         tugasDone[mhsBaik][i][5]= String.valueOf(tgl[2]);
                         System.out.println("Tugas berhasil ditandai selesai!");
-                    if(totalKompen[mhsBaik]<=Integer.valueOf(listReq[dsnIn][mhsBaik][5])){
-                            totalKompen[mhsBaik]=0;
-                        } else{
-                            totalKompen[mhsBaik]-= Integer.valueOf(listReq[dsnIn][mhsBaik][5]);
+                        int tugasKompen = Integer.parseInt(listReq[dsnIn][editReq][5]);
+                        if (totalKompen[mhsBaik] <= tugasKompen) {
+                            totalKompen[mhsBaik] = 0;
+                        } else {
+                            totalKompen[mhsBaik] -= tugasKompen;
                         }
-                    for(int k=kompen[mhsBaik].length-1; k>=1; k--){
-                        if(kompen[mhsBaik][k]==0){
-                            continue;
-                        }else if(kompen[mhsBaik][k]!=0){
-                         if(kompen[mhsBaik][k]< Integer.valueOf(listReq[dsnIn][mhsBaik][5])){
-                             listReq[dsnIn][mhsBaik][5] = String.valueOf(Integer.parseInt(listReq[dsnIn][mhsBaik][5]) - kompen[mhsBaik][k]);
-                             kompen[mhsBaik][k]=0;
-                             continue;
+                        for (int k = 1; k < kompen[mhsBaik].length; k++) {
+                            if(kompen[mhsBaik][k]==0){
+                                continue;
+                            } 
+                            if (kompen[mhsBaik][k] == Integer.parseInt(listReq[dsnIn][editReq][5])) {
+                                kompen[mhsBaik][k] =0;
+                                tugasKompen=0;
+                                break;
+                            } else if(kompen[mhsBaik][k] <= Integer.parseInt(listReq[dsnIn][editReq][5])){
+                                int temp= kompen[mhsBaik][k];
+                                kompen[mhsBaik][k] -= tugasKompen;
+                                tugasKompen-= temp;
                             }
-                            kompen[mhsBaik][k]-= Integer.valueOf(listReq[dsnIn][mhsBaik][5]);                          
-                        }
-                    }
-                            for (int d = 0; d < listReq[dsnIn][editReq].length - 1; d++) {
+                        }                            
+                        for (int d = 0; d < listReq[dsnIn][editReq].length - 1; d++) {
                                 listReq[dsnIn][editReq][d] = listReq[dsnIn][editReq+1][d];
                                 listReq[dsnIn][editReq+1][d] = null;
                             }
@@ -1310,5 +1313,6 @@ public class KompenMahasiswa {
             listReq[dosenTgs][kosong][6]= String.valueOf(tglReq);
             listReq[dosenTgs][kosong][7]= String.valueOf(blnReq);
             listReq[dosenTgs][kosong][8]= String.valueOf(thnReq);
+            System.out.println(dosenTgs+kosong);
     }
 }
