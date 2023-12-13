@@ -16,19 +16,19 @@ public class KompenMahasiswa {
 
     public static String[][] mhsData= {{"Mahasiswa"},{
         //mhs1
-    "Gheriya Rahima J.",
+    "Meganthropus Paleojavanicus",
     "TI - 1F",
     String.valueOf(smtSkrg[1]),
     "Teknologi Informasi",
     "Teknik Informatika"
     },{ //mhs2
-    "Lelyta Meyda Ayu",
+    "Pithecanthropus Mojokertensis",
     "TI - 1E",
     String.valueOf(smtSkrg[2]),
     "Teknologi Informasi",
     "Teknik Informatika"
     }, { //mhs3
-    "Rahmalia Mutia F.",
+    "Pithecanthropus Soloensis",
     "SIB - 1A",
     String.valueOf(smtSkrg[3]),
     "Teknologi Informasi",
@@ -38,12 +38,12 @@ public class KompenMahasiswa {
 
     //Data dsn1
     public static String dsnData[][]= {
-        {"Dosen"},{"Vanessa Cristin Natalia, S.Kom., M.Kom", "081918242172", "Ruang Dosen 6"}, {"Algi Pebrianto, S.Kom., M.Kom", "082134653299", "Ruang Dosen 6"}, {"Annisa Kurniawati, S.Kom,. M.Kom", "082134653299", "Ruang Dosen 6"}
+        {"Dosen"},{"Bpk. Yang Mulia Dosen"}, {"Ibu Salsa"}, {"Bpk. Adran"}
     };
 
     //Data adm1
     public static String admData[][]={
-        {"Admin"},{"Rocky Alessandro K.", "088999777666"}, {"Erik Ridho F.", "081555777333"}, {"Salsabila Mahda R.", "081918242172"}
+        {"Admin"},{"Bpk. Ucup Saifullah"}, {"Bpk. Sigit"}, {"Bpk. Rendang"}
     };
 
 
@@ -334,9 +334,9 @@ public class KompenMahasiswa {
     
     }
     private static void Profile(String userType) {
-        System.out.println("-----------------------------------");
-        System.out.println("|========= Profile " + userType + " =========|");
-        System.out.println("-----------------------------------");
+        System.out.println("\n----------------------------------------");
+        System.out.println("|======= Profile " + userType + " =======|");
+        System.out.println("----------------------------------------");
             switch (userType) {
                 case "Mahasiswa":
                     System.out.println("Nama            : " + mhsData[in][0]);
@@ -346,13 +346,10 @@ public class KompenMahasiswa {
                     System.out.println("Prodi           : " + mhsData[in][4]);
                     break;
                 case "Admin":
-                    System.out.println("Nama            : " + admData[in][0]);
-                    System.out.println("Nomor Telephone : " + admData[in][1]);
+                    System.out.println("Nama:       " + admData[in][0]);
                     break;
                 case "Dosen":
                     System.out.println("Nama            : " + dsnData[in][0]);
-                    System.out.println("Nomor Telephone : " + dsnData[in][1]);
-                    System.out.println("Ruang           : " + dsnData[in][2]);
                     break;
                 default:
                     System.out.println("Invalid user type.");
@@ -1385,5 +1382,23 @@ public class KompenMahasiswa {
             if(infoTugas[1].equals(dsnData[i][0])){
                 dosenTgs=i;
         }
+    }
+            for(int i=1; i<listReq[dosenTgs].length;i++){
+                if(listReq[dosenTgs][i][0]!=null){
+                    continue;
+                } else if(listReq[dosenTgs][i][0]==null){
+                    kosong= i;
+                    break;
+                }
+            }
+            listReq[dosenTgs][kosong][0]= mhsData[mhsIn][0];
+            listReq[dosenTgs][kosong][1]= mhsData[mhsIn][1];
+            listReq[dosenTgs][kosong][2]= mhsData[mhsIn][3];
+            listReq[dosenTgs][kosong][3]= mhsData[mhsIn][4];
+            listReq[dosenTgs][kosong][4]= infoTugas[0];
+            listReq[dosenTgs][kosong][5]= infoTugas[2];
+            listReq[dosenTgs][kosong][6]= String.valueOf(tglReq);
+            listReq[dosenTgs][kosong][7]= String.valueOf(blnReq);
+            listReq[dosenTgs][kosong][8]= String.valueOf(thnReq);
     }
 }
