@@ -1067,7 +1067,7 @@ public class KompenMahasiswa {
     }
     
     private static void HistoryTugas() {
-            System.out.println("-------------------------------");
+            System.out.println("\n-------------------------------");
             System.out.println("|====== History Tugas ========|");
             System.out.println("-------------------------------");
             boolean ada= false;
@@ -1088,7 +1088,9 @@ public class KompenMahasiswa {
                             System.out.println("Jumlah Kompen       : "+tugasDone[in][i][2]+" jam");
                             System.out.println("Tanggal Pengerjaan  : "+tugasDone[in][i][3]+"/"+tugasDone[in][i][4]+"/"+tugasDone[in][i][5]);
                             System.out.println("Tanggal Selesai     : "+tugasDone[in][i][6]+"/"+tugasDone[in][i][7]+"/"+tugasDone[in][i][8]);
-                            System.out.println();
+                            if(tugasDone[in][i+1][1]!=null){
+                                System.out.println();
+                            }
                         } else{
                             break;
                         }
@@ -1141,7 +1143,7 @@ public class KompenMahasiswa {
                 noReq= true;
             }
         }
-        if (!noReq) { //ganti print tugas direquest dahulu baru print daftar mhs penggarap tugas tsb
+        if (!noReq) {
             for (int i = 0; i < listReq[dsnIn].length; i++) {
                 if (listReq[dsnIn][i][0] == null || listReq[dsnIn][i][0].equals(listReq[dsnIn][i-1][0])) {
                     continue;
@@ -1263,13 +1265,17 @@ public class KompenMahasiswa {
                         }
                         int minus = Integer.parseInt(listReq[dsnIn][editReq][5]);
                         for (int k = kompen[mhsBaik].length-1; k>=1; k--) {
+                            int temp= kompen[mhsBaik][k];
                             if (kompen[mhsBaik][k] > 0 ){
-                                int temp= kompen[mhsBaik][k];
-                                kompen[mhsBaik][k]= kompen[mhsBaik][k]-minus;
+                                if(kompen[mhsBaik][k]<=minus){
+                                    kompen[mhsBaik][k]=0;
+                                } else{
+                                    kompen[mhsBaik][k]= kompen[mhsBaik][k]-minus;
+                                }
                                 minus= minus-temp;
                             } else if (kompen[mhsBaik][k] == Integer.parseInt(listReq[dsnIn][editReq][5])) {
                                 kompen[mhsBaik][k] =0;
-                                minus=0;
+                                minus= minus-temp;
                                 break;
                             }
                             if(minus<=0){
@@ -1291,7 +1297,6 @@ public class KompenMahasiswa {
             }
         }
     }
-        
         } else if(pilReq>batasReq){
             System.out.println("Masukan anda tidak valid.");
             continue;
