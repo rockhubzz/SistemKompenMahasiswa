@@ -396,17 +396,22 @@ public class KompenMahasiswa {
             if(nmEdit==0) return;
             boolean m12=true;
             while(m12){
-                String item[]= {"Nama"};
+                String itemAdm[]= {"Nama", "No. HP"};
+                String itemDsn[]= {"Nama", "No. HP", "Ruangan"};
                 String itemMhs[]= {"Nama", "Kelas", "Semester", "Jurusan", "Prodi"};
                 System.out.println("-------------------------------");
                 System.out.println("|========= Audit Data ========|");
                 System.out.println("-------------------------------");
                 System.out.println("Pilih item yang akan diedit: ");
-                if(auditMenu==1 || auditMenu==2){
-                    for(int i=0; i<item.length; i++){
-                        System.out.println((i+1)+". "+item[i]);
+                if(auditMenu==1){
+                    for(int i=0; i<itemAdm.length; i++){
+                        System.out.println((i+1)+". "+itemAdm[i]);
                     } 
-                } else if(auditMenu==3){
+                } else if(auditMenu==2){
+                    for(int i=0; i<itemDsn.length; i++){
+                        System.out.println((i+1)+". "+itemDsn[i]);
+                    } 
+                }else if(auditMenu==3){
                     for(int i=0; i<itemMhs.length; i++){
                         System.out.println((i+1)+". "+itemMhs[i]);
                     }
@@ -424,11 +429,11 @@ public class KompenMahasiswa {
                 boolean newIn=true;
                 while(newIn){
                     if(auditMenu==1){
-                        System.out.println(item[data-1]+" saat ini: "+admData[nmEdit][data-1]);
-                        System.out.print("Masukkan "+item[data-1]+" yang baru: ");
+                        System.out.println(itemAdm[data-1]+" saat ini: "+admData[nmEdit][data-1]);
+                        System.out.print("Masukkan "+itemAdm[data-1]+" yang baru: ");
                     }else if(auditMenu==2){
-                        System.out.println(item[data-1]+" saat ini: "+dsnData[nmEdit][data-1]);
-                        System.out.print("Masukkan "+item[data-1]+" yang baru: ");
+                        System.out.println(itemDsn[data-1]+" saat ini: "+dsnData[nmEdit][data-1]);
+                        System.out.print("Masukkan "+itemDsn[data-1]+" yang baru: ");
                     }else if(auditMenu==3){
                         System.out.println(itemMhs[data-1]+" saat ini: "+mhsData[nmEdit][data-1]);
                         System.out.print("Masukkan "+itemMhs[data-1]+" yang baru: ");
