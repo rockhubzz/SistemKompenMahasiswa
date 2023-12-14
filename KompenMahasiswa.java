@@ -16,36 +16,33 @@ public class KompenMahasiswa {
 
     public static String[][] mhsData= {{"Mahasiswa"},{
         //mhs1
-    "Meganthropus Paleojavanicus",
+    "Gheriya Rahima J.",
     "TI - 1F",
     String.valueOf(smtSkrg[1]),
     "Teknologi Informasi",
     "Teknik Informatika"
     },{ //mhs2
-    "Pithecanthropus Mojokertensis",
+    "Lelyta Meyda Ayu",
     "TI - 1E",
     String.valueOf(smtSkrg[2]),
     "Teknologi Informasi",
     "Teknik Informatika"
     }, { //mhs3
-    "Pithecanthropus Soloensis",
+    "Rahmalia Mutia F.",
     "SIB - 1A",
     String.valueOf(smtSkrg[3]),
     "Teknologi Informasi",
     "Sistem Informasi Bisnis"
     }
     };
-
     //Data dsn1
     public static String dsnData[][]= {
-        {"Dosen"},{"Bpk. Yang Mulia Dosen"}, {"Ibu Salsa"}, {"Bpk. Adran"}
+        {"Dosen"},{"Vanessa Cristin Natalia, S.Kom., M.Kom", "081918242172", "Ruang Dosen 6"}, {"Algi Pebrianto, S.Kom., M.Kom", "082134653299", "Ruang Dosen 6"}, {"Annisa Kurniawati, S.Kom,. M.Kom", "082134653299", "Ruang Dosen 6"}
     };
-
     //Data adm1
     public static String admData[][]={
-        {"Admin"},{"Bpk. Ucup Saifullah"}, {"Bpk. Sigit"}, {"Bpk. Rendang"}
+        {"Admin"},{"Rocky Alessandro K.", "088999777666"}, {"Erik Ridho F.", "081555777333"}, {"Salsabila Mahda R.", "081918242172"}
     };
-
 
     //array alpa mhs1
     static  {
