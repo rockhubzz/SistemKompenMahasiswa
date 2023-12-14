@@ -317,35 +317,35 @@ public class KompenMahasiswa {
             mhsChoice = scanner.nextByte();
             String userType = "Mahasiswa";
             switch (mhsChoice) {
-                case 1: // Profile
+                case 1:
                     Profile(userType);
                 break;
-                case 2: // Alpaku
+                case 2:
                     Alpaku();
                     break;
-                case 3: // Tugas Tersedia
+                case 3:
                     TugasTersedia();
                     break;
-                case 4: // History Tugas
+                case 4: 
                     HistoryTugas();
                     break;
-                case 5: // Peraturan Sistem Kompen Mahasiswa
+                case 5:
                     Peraturan();
                     break;
-                case 6: //Keamanan
+                case 6:
                     Keamanan(userType);
                     break;
-                case 7: // Help
+                case 7:
                     Helpmahasiswa();
                     break;
-                case 8: // Contact Admin
+                case 8:
                     ContactAdmin();
                     break;
-                case 9: //Logout
+                case 9:
                     System.out.println("Terima kasih telah bertanggung jawab atas tugas kompen anda ^^");
                     LogIn();
                 break;
-                case 10: //Quit
+                case 10:
                     System.out.println("Terima kasih telah bertanggung jawab atas tugas kompen anda ^^");
                     System.exit(0);
                     break;
@@ -374,13 +374,10 @@ public class KompenMahasiswa {
                     System.out.println("No. HP      :       " + admData[in][1]);
                     break;
                 case "Dosen":
-                    System.out.println("Nama            : " + dsnData[in][0]);
-                    System.out.println("No. HP          : " + dsnData[in][1]);
-                    System.out.println("Ruangan         : " + dsnData[in][2]);
+                    System.out.println("Nama        : " + dsnData[in][0]);
+                    System.out.println("No. HP      : " + dsnData[in][1]);
+                    System.out.println("Ruangan     : " + dsnData[in][2]);
                     break;
-                default:
-                    System.out.println("Invalid user type.");
-                    return;
             }
             Pilihan();
     }
