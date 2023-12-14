@@ -343,10 +343,13 @@ public class KompenMahasiswa {
                     System.out.println("Prodi           : " + mhsData[in][4]);
                     break;
                 case "Admin":
-                    System.out.println("Nama:       " + admData[in][0]);
+                    System.out.println("Nama        :       " + admData[in][0]);
+                    System.out.println("No. HP      :       " + admData[in][1]);
                     break;
                 case "Dosen":
                     System.out.println("Nama            : " + dsnData[in][0]);
+                    System.out.println("No. HP          : " + dsnData[in][1]);
+                    System.out.println("Ruangan         : " + dsnData[in][2]);
                     break;
                 default:
                     System.out.println("Invalid user type.");
