@@ -525,23 +525,12 @@ public class KompenMahasiswa {
         }
     }
 
-    private static String[][] tambahArray(String[][] arrayAwal, String[] dataBaru) {
-        String[][] arrayBaru = new String[arrayAwal.length + 1][dataBaru.length];
-    
-        for (int i = 0; i < arrayAwal.length; i++) {
-            System.arraycopy(arrayAwal[i], 0, arrayBaru[i], 0, arrayAwal[i].length);
-        }
-        System.arraycopy(dataBaru, 0, arrayBaru[arrayBaru.length - 1], 0, dataBaru.length);
-    
-        return arrayBaru;
-    }
-    
-
     private static void DataMahasiswa() {
         System.out.println("-----------------------------------");
         System.out.println("|========= Data Mahasiswa ========|");
         System.out.println("-----------------------------------");
 
+    
         for (int i = 1; i < mhsData.length; i++) {
             System.out.println("Mahasiswa " + i + ":");
             System.out.println("Nama: " + mhsData[i][0]);
@@ -551,66 +540,7 @@ public class KompenMahasiswa {
             System.out.println("Program Studi: " + mhsData[i][4]);
             System.out.println("-----------------------------------");
         }
-    
-        System.out.println();
-        System.out.println("99. Tambah Mahasiswa");
-        System.out.println("0. Kembali");
-        System.out.print("Pilih Mahasiswa: ");
-        int pilihmhs = scanner.nextInt();
-    
-        if (pilihmhs == 0) {
-            return;
-        } else if (pilihmhs == 99) {
-            scanner.nextLine();
-            System.out.println("\n===== Input Mahasiswa Baru =====");
-            System.out.print("Masukkan nama mahasiswa: ");
-            String mhsBaru = scanner.nextLine();
-            System.out.print("Masukkan kelas : ");
-            String kelasBaru = scanner.nextLine();
-            System.out.print("Masukkan semester: ");
-            String smtnew = scanner.nextLine();
-            System.out.print("Masukkan jurusan: ");
-            String jurusannew = scanner.nextLine();
-            System.out.print("Masukkan prodi: ");
-            String prodinew = scanner.nextLine();
-    
-            String[] mahasiswaBaru = {mhsBaru, kelasBaru, smtnew, jurusannew, prodinew};
-            mhsData = tambahArray(mhsData, mahasiswaBaru);
-    
-            System.out.println("\n===== Data Mahasiswa Baru =====");
-            System.out.println("Mahasiswa " + mhsData.length + ":");
-            System.out.println("Nama: " + mhsData[mhsData.length - 1][0]);
-            System.out.println("Kelas: " + mhsData[mhsData.length - 1][1]);
-            System.out.println("Semester: " + mhsData[mhsData.length - 1][2]);
-            System.out.println("Jurusan: " + mhsData[mhsData.length - 1][3]);
-            System.out.println("Program Studi: " + mhsData[mhsData.length - 1][4]);
-            System.out.println("-----------------------------------");
-        } else {
-            return;
-        }
-    
-        System.out.println("\n===== Data Mahasiswa Lengkap =====");
-        for (int i = 1; i < mhsData.length; i++) {
-            System.out.println("Mahasiswa " + i + ":");
-            System.out.println("Nama: " + mhsData[i][0]);
-            System.out.println("Kelas: " + mhsData[i][1]);
-            System.out.println("Semester: " + mhsData[i][2]);
-            System.out.println("Jurusan: " + mhsData[i][3]);
-            System.out.println("Program Studi: " + mhsData[i][4]);
-            System.out.println("-----------------------------------");
-        }
-    
-        for (int i = 0; i < mhsData.length; i++) {
-            if (mhsData[i][0] != null) {
-                continue;
-            } else {
-                tersedia = i;
-                break;
-            }
-        }
-    
-        System.out.println("Mahasiswa berhasil ditambahkan!");
-        Pilihan();
+            Pilihan();
     }
 
     private static void ManageKeamanan() {
