@@ -589,7 +589,6 @@ public class KompenMahasiswa {
             int kosong=0, usnKosong= 0;
             for(int i=1; i<mhs[0].length; i++){
                 if(mhs[0][i]==null){
-                    System.out.println(mhs[0][i]);
                         usnKosong=i;
                         break;
                 }
