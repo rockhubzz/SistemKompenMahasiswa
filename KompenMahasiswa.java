@@ -1321,12 +1321,12 @@ public class KompenMahasiswa {
                         continue;
                     }else if(tugasDone[mhsBaik][i][0]==null){
                         int tgl[]= new int[3];
-                        tugasDone[mhsBaik][i][0]= listReq[dsnIn][editReq][4];
+                        tugasDone[mhsBaik][i][0]= listReq[dsnIn][editReq][6];
                         tugasDone[mhsBaik][i][1]= dsnData[dsnIn][0];
-                        tugasDone[mhsBaik][i][2]= listReq[dsnIn][editReq][5];
-                        tugasDone[mhsBaik][i][3]= listReq[dsnIn][editReq][6];
-                        tugasDone[mhsBaik][i][4]= listReq[dsnIn][editReq][7];
-                        tugasDone[mhsBaik][i][5]= listReq[dsnIn][editReq][8];
+                        tugasDone[mhsBaik][i][2]= listReq[dsnIn][editReq][7];
+                        tugasDone[mhsBaik][i][3]= listReq[dsnIn][editReq][8];
+                        tugasDone[mhsBaik][i][4]= listReq[dsnIn][editReq][9];
+                        tugasDone[mhsBaik][i][5]= listReq[dsnIn][editReq][10];
                         while(true){
                             System.out.println("\nMasukkan tanggal tugas selesai: ");
                             System.out.print("Tanggal (DD): ");
@@ -1346,13 +1346,13 @@ public class KompenMahasiswa {
                         tugasDone[mhsBaik][i][7]= String.valueOf(tgl[1]);
                         tugasDone[mhsBaik][i][8]= String.valueOf(tgl[2]);
                         System.out.println("Tugas berhasil ditandai selesai!");
-                        int tugasKompen = Integer.parseInt(listReq[dsnIn][editReq][5]);
+                        int tugasKompen = Integer.parseInt(listReq[dsnIn][editReq][7]);
                         if (totalKompen[mhsBaik] <= tugasKompen) {
                             totalKompen[mhsBaik] = 0;
                         } else {
                             totalKompen[mhsBaik] -= tugasKompen;
                         }
-                        int minus = Integer.parseInt(listReq[dsnIn][editReq][5]);
+                        int minus = Integer.parseInt(listReq[dsnIn][editReq][7]);
                         for (int k = kompen[mhsBaik].length-1; k>=1; k--) {
                             int temp= kompen[mhsBaik][k];
                             if (kompen[mhsBaik][k] > 0 ){
@@ -1362,7 +1362,7 @@ public class KompenMahasiswa {
                                     kompen[mhsBaik][k]= kompen[mhsBaik][k]-minus;
                                 }
                                 minus= minus-temp;
-                            } else if (kompen[mhsBaik][k] == Integer.parseInt(listReq[dsnIn][editReq][5])) {
+                            } else if (kompen[mhsBaik][k] == Integer.parseInt(listReq[dsnIn][editReq][7])) {
                                 kompen[mhsBaik][k] =0;
                                 minus= minus-temp;
                                 break;
