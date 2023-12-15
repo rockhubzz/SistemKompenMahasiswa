@@ -425,7 +425,7 @@ public class KompenMahasiswa {
             while(m12){
                 String itemAdm[]= {"Nama", "No. HP"};
                 String itemDsn[]= {"Nama", "No. HP", "Ruangan"};
-                String itemMhs[]= {"Nama", "Kelas", "NIM","Semester", "Jurusan", "Prodi"};
+                String itemMhs[]= {"Nama", "Kelas", "Semester","NIM", "Jurusan", "Prodi"};
                 System.out.println("-------------------------------");
                 System.out.println("|========= Audit Data ========|");
                 System.out.println("-------------------------------");
@@ -462,7 +462,7 @@ public class KompenMahasiswa {
                         System.out.println(itemDsn[data-1]+" saat ini: "+dsnData[nmEdit][data-1]);
                         System.out.print("Masukkan "+itemDsn[data-1]+" yang baru: ");
                     }else if(auditMenu==3){
-                        System.out.println(itemMhs[data-1]+" saat ini: "+mhsData[nmEdit][data]);
+                        System.out.println(itemMhs[data-1]+" saat ini: "+mhsData[nmEdit][data-1]);
                         System.out.print("Masukkan "+itemMhs[data-1]+" yang baru: ");
                     }
                     String newItem= scanner.nextLine();
@@ -471,7 +471,7 @@ public class KompenMahasiswa {
                         }else if(auditMenu==2){
                             dsnData[nmEdit][data-1]= newItem;
                         }else if(auditMenu==3){
-                            if(data==4){
+                            if(data==3){
                                 if(Integer.valueOf(newItem)>14){
                                     System.out.println("Semester tidak valid.");
                                     continue;
@@ -492,7 +492,7 @@ public class KompenMahasiswa {
                                     }
                                 }
                             } else{
-                            mhsData[nmEdit][data]=newItem;
+                            mhsData[nmEdit][data-1]=newItem;
                             }
                         }
                         System.out.println("Item berhasil diedit!");
@@ -507,9 +507,12 @@ public class KompenMahasiswa {
         System.out.println("===== Input Alpa =====");
         System.out.println("Pilih nama mahasiswa yang akan anda input alpa:");
         for(int i=1; i<mhsData.length; i++){
+            if(mhsData[i][0]==null){
+                break;
+            }
             System.out.println(i+". "+mhsData[i][0]);
         }
-        System.out.println("0. Kembali");
+        System.out.println("\n0. Kembali");
         System.out.print("Masukkan pilihan anda: ");
         byte inputAlpa = scanner.nextByte();
             if(inputAlpa==0){
@@ -593,17 +596,17 @@ public class KompenMahasiswa {
             }
             scanner.nextLine();
             System.out.println("\n===== Input Mahasiswa Baru =====");
-            System.out.print("Masukkan nama mahasiswa: ");
+            System.out.print("Masukkan nama mahasiswa   : ");
             String mhsBaru = scanner.nextLine();
-            System.out.print("Masukkan kelas : ");
+            System.out.print("Masukkan kelas            : ");
             String kelasBaru = scanner.nextLine();
-            System.out.print("Masukkan NIM: ");
+            System.out.print("Masukkan NIM              : ");
             String nimBaru = scanner.nextLine();
-            System.out.print("Masukkan semester: ");
+            System.out.print("Masukkan semester         : ");
             String smtnew = scanner.nextLine();
-            System.out.print("Masukkan jurusan: ");
+            System.out.print("Masukkan jurusan          : ");
             String jurusannew = scanner.nextLine();
-            System.out.print("Masukkan prodi: ");
+            System.out.print("Masukkan prodi            : ");
             String prodinew = scanner.nextLine();
 
             for(int i=1; i<mhsData.length-1; i++){
