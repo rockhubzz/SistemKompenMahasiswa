@@ -5,7 +5,7 @@ public class KompenMahasiswa {
     public static int totalAlpa[]= new int[11], totalKompen[]= new int[11];
     public static int[][] alpa= new int[11][15], kompen= new int[11][15];
     public static String tugas[][] = new String[100][100]; 
-    public static String[][][] listReq= new String[10][100][9], tugasDone= new String [10][100][10];
+    public static String[][][] listReq= new String[10][100][11], tugasDone= new String [10][100][10];
     public static int tersedia= 0, in=0;
     public static int smtSkrg[]= {0,5,3,2,0,0,0,0,0,0,0};
 
@@ -1269,24 +1269,24 @@ public class KompenMahasiswa {
                 System.out.println("Masukan anda tidak valid.");
                 continue;
             } else if(editReq<=batasList){
-                String[] data = {"Nama", "Kelas", "Jurusan", "Prodi", "Judul Tugas", "Jumlah Kompen", "Tanggal Pengajuan"};
-                System.out.println("=== " + listReq[dsnIn][editReq][4] + " ===");
+                String[] data = {"Nama", "Kelas", "NIM", "Semester", "Jurusan", "Prodi", "Judul Tugas", "Jumlah Kompen", "Tanggal Pengajuan"};
+                System.out.println("=== " + listReq[dsnIn][editReq][6] + " ===");
                 
                 for (int i = 0; i < data.length; i++) {
                     String label = String.format("%-20s", data[i]);
-                    if (i < 6) {
+                    if (i < 8) {
                         System.out.print(label + ": " + listReq[dsnIn][editReq][i]);
-                        if(i==5){
+                        if(i==7){
                             System.out.print(" jam");
                         }
                         System.out.println();
-                    } else if (i == 6) {
+                    } else if (i == 8) {
                         System.out.print(label + ": ");
                         
-                        for (int x = 6; x < listReq[dsnIn][editReq].length; x++) {
+                        for (int x = 8; x < listReq[dsnIn][editReq].length; x++) {
                             if (x < listReq[dsnIn][editReq].length) {
                                 System.out.print(listReq[dsnIn][editReq][x]);
-                                if (x < 8) {
+                                if (x < 10) {
                                     System.out.print("/");
                                 }
                             } else {
@@ -1294,7 +1294,9 @@ public class KompenMahasiswa {
                             }
                         }
                         System.out.println();
-                    } else if(i>data.length){
+                    } else if(i<9){
+                    System.out.println(label + ": " + listReq[dsnIn][editReq][i]);
+                    }else if(i>data.length){
                         break;
                     }
                 }
@@ -1411,11 +1413,13 @@ public class KompenMahasiswa {
             listReq[dosenTgs][kosong][0]= mhsData[mhsIn][0];
             listReq[dosenTgs][kosong][1]= mhsData[mhsIn][1];
             listReq[dosenTgs][kosong][2]= mhsData[mhsIn][3];
-            listReq[dosenTgs][kosong][3]= mhsData[mhsIn][4];
-            listReq[dosenTgs][kosong][4]= infoTugas[0];
-            listReq[dosenTgs][kosong][5]= infoTugas[2];
-            listReq[dosenTgs][kosong][6]= String.valueOf(tglReq);
-            listReq[dosenTgs][kosong][7]= String.valueOf(blnReq);
-            listReq[dosenTgs][kosong][8]= String.valueOf(thnReq);
+            listReq[dosenTgs][kosong][3]= mhsData[mhsIn][2];
+            listReq[dosenTgs][kosong][4]= mhsData[mhsIn][4];
+            listReq[dosenTgs][kosong][5]= mhsData[mhsIn][5];
+            listReq[dosenTgs][kosong][6]= infoTugas[0];
+            listReq[dosenTgs][kosong][7]= infoTugas[2];
+            listReq[dosenTgs][kosong][8]= String.valueOf(tglReq);
+            listReq[dosenTgs][kosong][9]= String.valueOf(blnReq);
+            listReq[dosenTgs][kosong][10]= String.valueOf(thnReq);
     }
 }
