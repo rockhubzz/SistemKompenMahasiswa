@@ -580,7 +580,7 @@ public class KompenMahasiswa {
         System.out.println();
         System.out.println("99. Tambah Mahasiswa");
         System.out.println("0. Kembali");
-        System.out.print("Pilih Mahasiswa: ");
+        System.out.print("Masukkan pilihan anda: ");
         int pilihmhs = scanner.nextInt();
 
         if (pilihmhs == 0) {
