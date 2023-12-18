@@ -98,7 +98,7 @@ public class KompenMahasiswa {
     
     tugas[2][0] = "Editing Word";
     tugas[2][1] = dsnData[1][0];
-    tugas[2][2] = String.valueOf(2);
+    tugas[2][2] = String.valueOf(200);
     tugas[2][3] = String.valueOf(1);
     tugas[2][4] = String.valueOf(1); tugas[2][5] = String.valueOf(10); tugas[2][6] = String.valueOf(2023);
     
@@ -959,53 +959,70 @@ public class KompenMahasiswa {
     }
 
     private static void Keamanan(String toChange) {
-        System.out.println("-------------------------------");
-        System.out.println("|========= Keamanan ==========|");
-        System.out.println("-------------------------------");
-        System.out.println("1. Ubah Username");
-        System.out.println("2. Ubah Password");
-        System.out.println("0. Kembali");
-        System.out.print("Masukkan pilihan anda: ");
-        int aman = scanner.nextInt();
-        String usnPw[] = {"Username", "Password"};
-    
-        if (aman == 0) {
+        while(true){
+            System.out.println("-------------------------------");
+            System.out.println("|========= Keamanan ==========|");
+            System.out.println("-------------------------------");
+            System.out.println("1. Ubah Username");
+            System.out.println("2. Ubah Password");
+            System.out.println("0. Kembali");
+            System.out.print("Masukkan pilihan anda: ");
+            int aman = scanner.nextInt();
+            String usnPw[] = {"Username", "Password"};
+        
+            if (aman == 0) {
+                return;
+            }
+            boolean verif = true;
+            scanner.nextLine();
+            while (verif) {
+                System.out.print("\nMasukkan Password anda saat ini: ");
+                String ver = scanner.nextLine();
+                switch (toChange) {
+                    case "Dosen":
+                        if(ver.equals(dsn[1][in-1])){
+                            verif=false;
+                        }
+                    break;
+                    case "Mahasiswa":
+                        if (ver.equals(mhs[1][in - 1])) {
+                            verif = false;
+                        }
+                    break;
+                    default:
+                    System.out.println("Password yang anda masukkan salah.");
+                        continue;
+            }
+        }
+        
+            boolean edit = true;
+            while (edit) {
+                System.out.print("Masukkan " + usnPw[aman - 1] + " baru: ");
+                String newUsn = scanner.nextLine();
+                if(toChange.equals("Dosen")){
+                    if(newUsn.equals(dsn[aman - 1][in - 1])){
+                        System.out.println(usnPw[aman - 1] + " baru tidak boleh sama.");
+                        continue;
+                    }
+                } else if(toChange.equals("Mahasiswa")){
+                    if (newUsn.equals(mhs[aman - 1][in - 1])) {
+                        System.out.println(usnPw[aman - 1] + " baru tidak boleh sama.");
+                        continue;
+                    }
+                }
+                    if (toChange.equals("Mahasiswa")) {
+                        mhs[aman - 1][in - 1] = newUsn;
+                    } else if(toChange.equals("Dosen")) {
+                        dsn[aman - 1][in - 1] = newUsn;
+                    }
+                    System.out.println(usnPw[aman - 1] + " berhasil diubah!");
+                    edit = false;
+                    break;
+            }
             return;
         }
-        boolean verif = true;
-        scanner.nextLine();
-        while (verif) {
-            System.out.print("\nMasukkan Password anda saat ini: ");
-            String ver = scanner.nextLine();
-            if (ver.equals(mhs[1][in - 1]) || ver.equals(dsn[1][in - 1])) {
-                verif = false;
-                break;
-            } else {
-                System.out.println("Password yang anda masukkan salah.");
-                continue;
-            }
-        }
-    
-        boolean edit = true;
-        while (edit) {
-            System.out.print("Masukkan " + usnPw[aman - 1] + " baru: ");
-            String newUsn = scanner.nextLine();
-            if (newUsn.equals(mhs[aman - 1][in - 1]) || newUsn.equals(dsn[aman - 1][in - 1])) {
-                System.out.println(usnPw[aman - 1] + " baru tidak boleh sama.");
-                continue;
-            } else {
-                if (toChange.equals("Mahasiswa")) {
-                    mhs[aman - 1][in - 1] = newUsn;
-                } else if(toChange.equals("Dosen")) {
-                    dsn[aman - 1][in - 1] = newUsn;
-                }
-    
-                System.out.println(usnPw[aman - 1] + " berhasil diubah!");
-                edit = false;
-                break;
-            }
-        }
     }
+
 
     private static void ContactAdmin() {
         System.out.println("-----------------------------------");
@@ -1113,6 +1130,12 @@ public class KompenMahasiswa {
                             menu1 = false;
                             break;
                         case 1:
+                        if(Integer.valueOf(tugas[pilih1][2])>totalKompen[in]){
+                            System.out.println("Jumlah kompen tugas yang dipilih melebihi jam kompen anda.");
+                            System.out.println("Silakan kerjakan tugas lainnya.");
+                            menu1= false;
+                            break;
+                        }
                             int tglAsk, blnAsk, thnAsk;
                             while (true){
                                 System.out.println("\nMasukkan tanggal pengerjaan: ");
@@ -1255,7 +1278,7 @@ public class KompenMahasiswa {
             System.out.println("\n=== List Pengajuan Tugas "+listReq[dsnIn][pilReq][0]+" ===");
             for(int i=0; i<listReq[dsnIn][i].length-1; i++){
                 if(listReq[dsnIn][i][0]!= null && listReq[dsnIn][i][0].equals(listReq[dsnIn][i][0])){
-                    System.out.println(i+". "+listReq[dsnIn][i][4]);
+                    System.out.println(i+". "+listReq[dsnIn][i][6]);
                     batasList+=i;
                 }
             }
